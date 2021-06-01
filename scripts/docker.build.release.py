@@ -13,4 +13,4 @@ parser.add_argument('--version',
 
 args = parser.parse_args()
 
-system(f'docker build -t {args.tag} -f dockerfile.release .')
+system(f'docker build -t {args.tag} -f dockerfile.release --build-arg VERSION={args.version} .')
