@@ -1,0 +1,22 @@
+version: "3.6"
+
+services:
+    hermes-api:
+        image: nerdscomputing/hermes.api:latest
+        build:
+            context: .
+            dockerfile: dockerfile.release
+        container_name: hermes-api
+        environment:
+            ASPNETCORE_ENVIRONMENT: ${HERMES_API_ENVIRONMENT}
+            ASPNETCORE_URLS: http://localhost:5002
+        depends_on:
+            - hermes-db
+        network_mode: host
+    hermes-db:
+        image: mysql:8.0.25
+        container_name: hermes-db
+        environment:
+            MYSQL_ROOT_PASSWORD: admin
+        ports:
+            - "3306:3306"

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/casian/hermes/hermes.api/hermes.api/Presentation/Presentation.csproj": {}
+    "/home/casian/hermes/hermes.api/Presentation/Presentation.csproj": {}
   },
   "projects": {
-    "/home/casian/hermes/hermes.api/hermes.api/Presentation/Presentation.csproj": {
+    "/home/casian/hermes/hermes.api/Presentation/Presentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/casian/hermes/hermes.api/hermes.api/Presentation/Presentation.csproj",
+        "projectUniqueName": "/home/casian/hermes/hermes.api/Presentation/Presentation.csproj",
         "projectName": "Presentation",
-        "projectPath": "/home/casian/hermes/hermes.api/hermes.api/Presentation/Presentation.csproj",
+        "projectPath": "/home/casian/hermes/hermes.api/Presentation/Presentation.csproj",
         "packagesPath": "/home/casian/.nuget/packages/",
-        "outputPath": "/home/casian/hermes/hermes.api/hermes.api/Presentation/obj/",
+        "outputPath": "/home/casian/hermes/hermes.api/Presentation/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/casian/.nuget/NuGet/NuGet.Config"
