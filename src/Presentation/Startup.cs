@@ -17,6 +17,10 @@ namespace Presentation
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseWelcomePage();
+            }
 
             app.UseRouting();
 
