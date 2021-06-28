@@ -14,10 +14,7 @@ namespace Presentation
     {
         private readonly IConfiguration _config;
         
-        public Startup(IConfiguration configuration, IConfiguration config)
-        {
-            _config = config;
-        }
+        public Startup(IConfiguration configuration, IConfiguration config) => _config = config;
 
         public void ConfigureServices(IServiceCollection services)
         {

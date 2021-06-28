@@ -1,7 +1,7 @@
 {
   "environment": "Default",
   "Database": {
-    "ConnectionString": "caca"
+    "ConnectionString": "Server=127.0.0.1,3306;Database=hermes;User=root;Password=admin;"
   }
 }
 
