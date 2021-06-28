@@ -5,9 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace Presentation
 {
@@ -31,8 +28,8 @@ namespace Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             ConnectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<DataContext>(
-                options => options.UseSqlServer(ConnectionString));
+            services.AddDbContext<DataContext>(options =>
+                 options.UseMySQL(ConnectionString));
             services.AddControllers();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
