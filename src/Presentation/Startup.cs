@@ -20,7 +20,7 @@ namespace Presentation
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             String environmentVariable = _config.GetValue<String>("environment");
-            if (environmentVariable == "Development")
+            if (environmentVariable == "Default")
             {
                 app.UseDeveloperExceptionPage();
             }
