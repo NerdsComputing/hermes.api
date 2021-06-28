@@ -12,20 +12,18 @@ namespace Presentation
     
     public class Startup
     {
-        private String _connectionString;
         private readonly IConfiguration _config;
         
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IConfiguration config)
         {
-            _config = configuration;
-            _connectionString = _config.GetConnectionString("DefaultConnectionString");
+            _config = config;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            _connectionString = _config.GetConnectionString("DefaultConnectionString");
+            var connectionString = _config.GetSection("Database").GetValue<string>("ConnectionString");
             services.AddDbContext<Context>(options =>
-                 options.UseMySQL(_connectionString));
+                 options.UseMySQL(connectionString));
             services.AddControllers();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
