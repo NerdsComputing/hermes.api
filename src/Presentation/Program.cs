@@ -12,7 +12,7 @@ namespace Presentation
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostContext, config) =>
                 {
-                    config.AddJsonFile("settings/settings.default.json", optional: true, reloadOnChange: true);
+                    config.AddJsonFile("Settings/settings.default.json");
                     config.AddEnvironmentVariables("HERMES_API_");
                 })
                 .ConfigureWebHostDefaults(webBuilder =>  webBuilder.UseStartup<Startup>()); 
