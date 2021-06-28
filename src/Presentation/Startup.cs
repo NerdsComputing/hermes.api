@@ -10,6 +10,7 @@ namespace Presentation
     {
         public static void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
         }
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -24,6 +25,13 @@ namespace Presentation
             {
                 endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World!"); });
             });
+            
+             app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                   name: "default",
+                   pattern: "{controller=Home}/{action=Index}/{id?}");
+             });
         }
     }
 }
