@@ -19,7 +19,7 @@ namespace Presentation
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            String environmentVariable = _config.GetValue<String>("environmentVariables:ASPNETCORE_ENVIRONMENT");
+            String environmentVariable = _config.GetValue<String>("environment");
             if (environmentVariable == "Development")
             {
                 app.UseDeveloperExceptionPage();
