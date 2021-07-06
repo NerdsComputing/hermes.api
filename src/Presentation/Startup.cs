@@ -9,12 +9,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Presentation
 {
-    
+
     public class Startup
     {
         private readonly IConfiguration _config;
-        
-        public Startup(IConfiguration configuration, IConfiguration config) => _config = config;
+
+        public Startup(IConfiguration config) => _config = config;
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -23,8 +23,12 @@ namespace Presentation
                  options.UseMySQL(connectionString));
             services.AddControllers();
         }
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Context context)
         {
+            context.Database.EnsureCreated();
+            context.Add(new EDetections{Name = "name"});
+            context.SaveChanges();
+
             String environmentVariable = _config.GetValue<String>("environment");
             if (environmentVariable == "Default")
             {
@@ -37,7 +41,7 @@ namespace Presentation
             {
                 endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World!"); });
             });
-            
+
              app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
