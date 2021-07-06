@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Presentation.GraphQL.Base
 {
-    public class GraphQuery
+    public class Dto
     {
         public string Query { get; set; }
 
