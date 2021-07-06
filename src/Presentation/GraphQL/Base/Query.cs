@@ -7,7 +7,7 @@ namespace Presentation.GraphQL.Base
          public Query()
          {
              Name = "Query";
-             Field(typeof(StringGraphType), "BasicQuery",null, null, x => "Mutation!");
+             Field(typeof(StringGraphType), "BasicQuery","Query description", null, x => "Query");
          }
      }
 }
