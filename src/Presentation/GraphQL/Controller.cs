@@ -9,18 +9,15 @@ namespace Presentation.GraphQL
     [Route("graphql")]
     public class Controller : Microsoft.AspNetCore.Mvc.Controller
     {
-        private readonly GraphSchema _schema;
+        private readonly Schema _schema;
 
-        public Controller(GraphSchema schema)
-        {
-            _schema = schema;
-        }
+        public Controller(Schema schema) => _schema = schema;
+
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] GraphQuery query)
+        public async Task<IActionResult> Post([FromBody] Dto query)
         {
-            var executor = new DocumentExecuter();
-            var result = await executor.ExecuteAsync(configure =>
+            var result = await new DocumentExecuter().ExecuteAsync(configure =>
             {
                 configure.Schema = _schema;
                 configure.Query = query.Query;
@@ -32,8 +29,7 @@ namespace Presentation.GraphQL
                 return BadRequest();
             }
 
-            var documentWriter = new DocumentWriter();
-            var json = await documentWriter.WriteToStringAsync(result);
+            var json = await new DocumentWriter().WriteToStringAsync(result);
             return Ok(json);
         }
     }
