@@ -1,11 +1,11 @@
 using System;
 using Data;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Presentation.GraphQL.Base;
 
 namespace Presentation
 {
@@ -19,14 +19,18 @@ namespace Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = _config.GetSection("Database").GetValue<string>("ConnectionString");
+
             services.AddDbContext<Context>(options =>
                  options.UseMySQL(connectionString));
             services.AddControllers();
+
+            services.AddScoped<GraphSchema>();
         }
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Context context)
+        public void Configure(IApplicationBuilder app, Context dbContext)
         {
-            context.Database.Migrate();
-            context.SaveChanges();
+            dbContext.Database.EnsureCreated();
+            dbContext.Add(new EDetections{Name = "name"});
+            dbContext.SaveChanges();
 
             String environmentVariable = _config.GetValue<String>("environment");
             if (environmentVariable == "Default")
