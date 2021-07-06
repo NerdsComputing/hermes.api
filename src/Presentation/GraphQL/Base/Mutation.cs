@@ -7,7 +7,7 @@ namespace Presentation.GraphQL.Base
         public Mutation()
         {
             Name = "Mutation";
-            Field(typeof(StringGraphType), "BasicMutation","Mutation description", null, x => "Mutation");
+            Field(typeof(StringGraphType), "BasicMutation","Mutation description", null, _ => "Mutation");
         }
     }
 }
