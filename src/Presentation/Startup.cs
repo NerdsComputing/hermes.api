@@ -23,7 +23,7 @@ namespace Presentation
             services.AddDbContext<Context>(options => options.UseMySQL(connectionString));
             services.AddControllers();
 
-            services.AddScoped<GraphSchema>();
+            services.AddScoped<Schema>();
         }
         public void Configure(IApplicationBuilder app, Context dbContext)
         {
