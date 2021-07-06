@@ -20,8 +20,7 @@ namespace Presentation
         {
             var connectionString = _config.GetSection("Database").GetValue<string>("ConnectionString");
 
-            services.AddDbContext<Context>(options =>
-                 options.UseMySQL(connectionString));
+            services.AddDbContext<Context>(options => options.UseMySQL(connectionString));
             services.AddControllers();
 
             services.AddScoped<GraphSchema>();
