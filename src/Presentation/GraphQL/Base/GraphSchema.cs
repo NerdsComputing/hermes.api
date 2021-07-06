@@ -7,10 +7,10 @@ namespace Presentation.GraphQL.Base
         public GraphSchema()
         {
             Mutation = new Mutation();
-            Mutation.Name = "caca";
+            Mutation.Name = "mutation";
 
             Query = new Query();
-            Query.Name = "pipi";
+            Query.Name = "query";
 
         }
     }
