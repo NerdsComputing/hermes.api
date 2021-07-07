@@ -9,7 +9,6 @@ using Presentation.GraphQL.Base;
 
 namespace Presentation
 {
-
     public class Startup
     {
         private readonly IConfiguration _config;
@@ -25,18 +24,25 @@ namespace Presentation
 
             services.AddScoped<Schema>();
         }
+
         public void Configure(IApplicationBuilder app, Context dbContext)
         {
-            dbContext.Database.EnsureCreated();
-            dbContext.Add(new EDetections{Name = "name"});
-            dbContext.SaveChanges();
+            VerifyEnvironment(app);
+            AddInDatabase(dbContext);
+            MakeRouteEndpoints(app);
+        }
 
+        private void VerifyEnvironment(IApplicationBuilder app)
+        {
             String environmentVariable = _config.GetValue<String>("environment");
             if (environmentVariable == "Default")
             {
                 app.UseDeveloperExceptionPage();
             }
+        }
 
+        private void MakeRouteEndpoints(IApplicationBuilder app)
+        {
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
@@ -44,12 +50,19 @@ namespace Presentation
                 endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World!"); });
             });
 
-             app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                   name: "default",
-                   pattern: "{controller=Home}/{action=Index}/{id?}");
-             });
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+        }
+
+        private void AddInDatabase(Context dbContext)
+        {
+            dbContext.Database.EnsureCreated();
+            dbContext.Add(new EDetections {Name = "name"});
+            dbContext.SaveChanges();
         }
     }
 }
