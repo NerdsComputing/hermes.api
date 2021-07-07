@@ -27,12 +27,12 @@ namespace Presentation
 
         public void Configure(IApplicationBuilder app, Context dbContext)
         {
-            VerifyEnvironment(app);
-            AddInDatabase(dbContext);
-            MakeRouteEndpoints(app);
+            ConfigureEnvironment(app);
+            ConfigureDatabase(dbContext);
+            ConfigureEndpoints(app);
         }
 
-        private void VerifyEnvironment(IApplicationBuilder app)
+        private void ConfigureEnvironment(IApplicationBuilder app)
         {
             String environmentVariable = _config.GetValue<String>("environment");
             if (environmentVariable == "Default")
@@ -41,7 +41,7 @@ namespace Presentation
             }
         }
 
-        private void MakeRouteEndpoints(IApplicationBuilder app)
+        private void ConfigureEndpoints(IApplicationBuilder app)
         {
             app.UseRouting();
 
@@ -58,11 +58,6 @@ namespace Presentation
             });
         }
 
-        private void AddInDatabase(Context dbContext)
-        {
-            dbContext.Database.EnsureCreated();
-            dbContext.Add(new EDetections {Name = "name"});
-            dbContext.SaveChanges();
-        }
+        private void ConfigureDatabase(Context dbContext) => dbContext.Database.Migrate();
     }
 }
