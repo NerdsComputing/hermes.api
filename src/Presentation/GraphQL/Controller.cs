@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using GraphQL.NewtonsoftJson;
@@ -13,24 +14,28 @@ namespace Presentation.GraphQL
 
         public Controller(Schema schema) => _schema = schema;
 
-
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Dto query)
         {
-            var result = await new DocumentExecuter().ExecuteAsync(configure =>
-            {
-                configure.Schema = _schema;
-                configure.Query = query.Query;
-                configure.Inputs = query.Variables.ToInputs();
-            }).ConfigureAwait(false);
+            var result = await Execute(query);
+            return await ToActionResult(result);
+        }
 
-            if(result.Errors?.Count > 0)
+        private async Task<ExecutionResult> Execute(Dto query) => await new DocumentExecuter().ExecuteAsync(configure =>
+        {
+            configure.Schema = _schema;
+            configure.Query = query.Query;
+            configure.Inputs = query.Variables.ToInputs();
+        }).ConfigureAwait(false);
+
+        private async Task<IActionResult> ToActionResult(ExecutionResult result)
+        {
+            if (result.Errors?.Count > 0)
             {
                 return BadRequest();
             }
 
-            var json = await new DocumentWriter().WriteToStringAsync(result);
-            return Ok(json);
+            return Ok(await new DocumentWriter().WriteToStringAsync(result));
         }
     }
 }
