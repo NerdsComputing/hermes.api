@@ -25,8 +25,7 @@ namespace Presentation
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Context context)
         {
-            context.Database.EnsureCreated();
-            context.Add(new EDetections{Name = "name"});
+            context.Database.Migrate();
             context.SaveChanges();
 
             String environmentVariable = _config.GetValue<String>("environment");
