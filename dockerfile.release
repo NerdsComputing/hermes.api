@@ -1,11 +1,17 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-release
 
-ARG VERSION="2021.0.0.0"
+ARG SHORT_VERSION="2021.0.0.0"
+ARG LONG_VERSION="2021.0.0.Branch.Sha"
 ENV SolutionDir="/srv/hermes.api"
 
 WORKDIR /srv/hermes.api
 COPY . .
-RUN dotnet publish src/Presentation/Presentation.csproj -c Release -o bin /p:Version=$VERSION
+
+RUN dotnet publish src/Presentation/Presentation.csproj \
+    -c Release \
+    -o bin \
+    /p:Version=${SHORT_VERSION} \
+    /p:InformationalVersion=${LONG_VERSION}
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /srv/hermes.api
