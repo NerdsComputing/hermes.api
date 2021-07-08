@@ -16,7 +16,7 @@ namespace Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.3");
 
-            modelBuilder.Entity("Data.EDetections", b =>
+            modelBuilder.Entity("Data.EDetection", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

@@ -1,6 +1,6 @@
 namespace Data
 {
-    public class EDetections
+    public class EDetection
     {
         public int Id { get; set; }
 
