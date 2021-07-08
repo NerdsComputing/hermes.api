@@ -1,13 +1,15 @@
-using System;
-
 namespace Business.Models
 {
+    using System;
+
     public class MDetection
     {
-        public int Id { set; get; }
-        public int Score { set; get; }
-        public object Class { set; get; }
-        public DateTime Timestep { set; get; }
+        public int Id { get; set; }
 
+        public int Score { get; set; }
+
+        public object Class { get; set; }
+
+        public DateTime Timestep { get; set; }
     }
 }
