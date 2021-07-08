@@ -1,12 +1,14 @@
-using System.Linq;
-using System.Threading.Tasks;
-using GraphQL;
-using GraphQL.NewtonsoftJson;
-using Microsoft.AspNetCore.Mvc;
-using Presentation.GraphQL.Base;
-
 namespace Presentation.GraphQL
 {
+    using System.Diagnostics.CodeAnalysis;
+    using System.Threading.Tasks;
+    using global::GraphQL;
+    using global::GraphQL.NewtonsoftJson;
+    using Microsoft.AspNetCore.Mvc;
+    using Presentation.GraphQL.Base;
+    using Style;
+
+    [SuppressMessage(Category.Default, Check.CA1724, Justification = Reason.Readability)]
     [Route("graphql")]
     public class Controller : Microsoft.AspNetCore.Mvc.Controller
     {
@@ -17,8 +19,8 @@ namespace Presentation.GraphQL
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Dto query)
         {
-            var result = await Execute(query);
-            return await ToActionResult(result);
+            var result = await Execute(query).ConfigureAwait(false);
+            return await ToActionResult(result).ConfigureAwait(false);
         }
 
         private async Task<ExecutionResult> Execute(Dto query) => await new DocumentExecuter().ExecuteAsync(configure =>
@@ -35,7 +37,7 @@ namespace Presentation.GraphQL
                 return BadRequest();
             }
 
-            return Ok(await new DocumentWriter().WriteToStringAsync(result));
+            return Ok(await new DocumentWriter().WriteToStringAsync(result).ConfigureAwait(false));
         }
     }
 }

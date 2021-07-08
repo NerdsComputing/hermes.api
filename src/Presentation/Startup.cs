@@ -1,14 +1,13 @@
-using System;
-using Data;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Presentation.GraphQL.Base;
-
 namespace Presentation
 {
+    using Data;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Presentation.GraphQL.Base;
+
     public class Startup
     {
         private readonly IConfiguration _config;
@@ -25,23 +24,23 @@ namespace Presentation
             services.AddScoped<Schema>();
         }
 
-        public void Configure(IApplicationBuilder app, Context dbContext)
+        public void Configure(IApplicationBuilder app, Context context)
         {
             ConfigureEnvironment(app);
-            ConfigureDatabase(dbContext);
+            ConfigureDatabase(context);
             ConfigureEndpoints(app);
         }
 
         private void ConfigureEnvironment(IApplicationBuilder app)
         {
-            String environmentVariable = _config.GetValue<String>("environment");
+            string environmentVariable = _config.GetValue<string>("environment");
             if (environmentVariable == "Default")
             {
                 app.UseDeveloperExceptionPage();
             }
         }
 
-        private void ConfigureEndpoints(IApplicationBuilder app)
+        private static void ConfigureEndpoints(IApplicationBuilder app)
         {
             app.UseRouting();
 
@@ -52,12 +51,10 @@ namespace Presentation
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
 
-        private void ConfigureDatabase(Context dbContext) => dbContext.Database.Migrate();
+        private static void ConfigureDatabase(Context context) => context.Database.Migrate();
     }
 }
