@@ -10,6 +10,6 @@ namespace Business.Models
 
         public object Class { get; set; }
 
-        public DateTime Timestep { get; set; }
+        public DateTime Timestamp { get; set; }
     }
 }
