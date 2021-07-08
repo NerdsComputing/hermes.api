@@ -8,7 +8,7 @@ namespace Business.Models
 
         public int Score { get; set; }
 
-        public object Class { get; set; }
+        public string Class { get; set; }
 
         public DateTime Timestamp { get; set; }
     }
