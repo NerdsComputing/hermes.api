@@ -3,7 +3,7 @@
     using System;
     using Microsoft.EntityFrameworkCore.Migrations;
 
-    public partial class Alter_Detections_AddFields : Migration
+    public partial class AlterDetectionsAddFields : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
