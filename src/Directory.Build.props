@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>$(SolutionDir)/src/StyleCop.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)/src/Style/Style.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(SolutionDir)/src/StyleCop.json" Link="StyleCop.json" />
+  </ItemGroup>
+</Project>
