@@ -1,4 +1,4 @@
-namespace Presentation.Home
+namespace Presentation.Status
 {
     using System.Reflection;
     using Microsoft.AspNetCore.Mvc;
@@ -7,9 +7,6 @@ namespace Presentation.Home
     public class Controller : Microsoft.AspNetCore.Mvc.Controller
     {
         [HttpGet("version")]
-        public static string Get()
-        {
-            return Assembly.GetExecutingAssembly().FullName;
-        }
+        public IActionResult Version() => Ok(Assembly.GetExecutingAssembly().FullName);
     }
 }
