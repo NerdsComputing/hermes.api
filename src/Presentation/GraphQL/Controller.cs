@@ -1,12 +1,11 @@
 namespace Presentation.GraphQL
 {
     using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
     using System.Threading.Tasks;
     using global::GraphQL;
     using global::GraphQL.NewtonsoftJson;
     using Microsoft.AspNetCore.Mvc;
-    using Presentation.GraphQL.Base;
+    using Base;
     using Style;
 
     [SuppressMessage(Category.Default, Check.CA1724, Justification = Reason.Readability)]

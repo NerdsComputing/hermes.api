@@ -1,13 +1,12 @@
 namespace Presentation
 {
-    using System;
     using Data;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Presentation.GraphQL.Base;
+    using GraphQL.Base;
 
     public class Startup
     {
@@ -52,9 +51,7 @@ namespace Presentation
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
 
