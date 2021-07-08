@@ -11,7 +11,7 @@
                 name: "Class",
                 table: "Detections",
                 type: "text",
-                nullable: true);
+                nullable: false);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "Timestamp",

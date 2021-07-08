@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210708111637_AlterDetectionsAddFields")]
+    [Migration("20210708131624_AlterDetectionsAddFields")]
     partial class AlterDetectionsAddFields
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,7 @@ namespace Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Class")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Score")

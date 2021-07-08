@@ -24,6 +24,7 @@ namespace Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Class")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Score")
