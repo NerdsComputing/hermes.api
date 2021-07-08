@@ -5,7 +5,7 @@ namespace Presentation.GraphQL
     using global::GraphQL;
     using global::GraphQL.NewtonsoftJson;
     using Microsoft.AspNetCore.Mvc;
-    using Base;
+    using Presentation.GraphQL.Base;
     using Style;
 
     [SuppressMessage(Category.Default, Check.CA1724, Justification = Reason.Readability)]

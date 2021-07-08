@@ -6,7 +6,7 @@ namespace Presentation
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using GraphQL.Base;
+    using Presentation.GraphQL.Base;
 
     public class Startup
     {
