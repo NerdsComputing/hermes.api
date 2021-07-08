@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210708111049_AlterDetectionsAddFields")]
+    [Migration("20210708111637_AlterDetectionsAddFields")]
     partial class AlterDetectionsAddFields
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
