@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-
 namespace Presentation
 {
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Hosting;
+
     public static class Program
     {
         public static void Main(string[] args) => CreateHostBuilder(args).Build().Run();
@@ -15,6 +15,6 @@ namespace Presentation
                     config.AddJsonFile("Settings/settings.default.json");
                     config.AddEnvironmentVariables("HERMES_API_");
                 })
-                .ConfigureWebHostDefaults(webBuilder =>  webBuilder.UseStartup<Startup>()); 
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
     }
 }

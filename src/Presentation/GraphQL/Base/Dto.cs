@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-
 namespace Presentation.GraphQL.Base
 {
+    using System.Collections.Generic;
+
     public class Dto
     {
         public string Query { get; set; }
