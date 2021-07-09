@@ -23,7 +23,7 @@ The script will create a new migration.
 ### `python3 scripts/migration.remove.py`
 The script will remove the last migration created. If migration was already applied to database you have to update first to the previous migration and then remove it.
 
-### `python3 scripts/migrations.undo.py --name Migration_Name`
+### `python3 scripts/migration.undo.py --name Migration_Name`
 The script will update database to the Migration_Name
 
 ### `python3 scripts/migration.apply.py`
