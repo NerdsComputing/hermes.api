@@ -1,5 +1,9 @@
 namespace Presentation
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using Business.Detection.Common.Models;
+    using Business.Detection.Fetching.Commands;
     using Data;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
@@ -22,6 +26,7 @@ namespace Presentation
             services.AddControllers();
 
             services.AddScoped<Schema>();
+            services.AddTransient<IGetDetection>();
         }
 
         public void Configure(IApplicationBuilder app, Context context)

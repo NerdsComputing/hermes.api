@@ -1,7 +1,7 @@
-namespace Business.Detection.Repositories
+namespace Business.Detection.Common.Repositories
 {
     using System.Collections.Generic;
-    using Business.Detection.Models;
+    using Business.Detection.Common.Models;
 
     public interface IDetectionRepository
     {

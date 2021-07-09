@@ -1,4 +1,4 @@
-namespace Business.Detection.Models
+namespace Business.Detection.Common.Models
 {
     using System;
 
