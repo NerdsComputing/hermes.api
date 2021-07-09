@@ -1,6 +1,5 @@
 namespace Data
 {
-    using System;
     using Microsoft.EntityFrameworkCore;
 
     public class Context : DbContext
