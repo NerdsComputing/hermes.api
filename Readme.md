@@ -17,14 +17,14 @@ The script starts the hermes-db dependency by using docker-compose.
 
 ### Migrations Scripts
 In the project directory run:
-### `python3 scripts/add.migration.py --name Migration_Name`
+### `python3 scripts/migration.add.py --name Migration_Name`
 The script will create a new migration.
 
-### `python3 scripts/remove.migration.py`
+### `python3 scripts/migration.remove.py`
 The script will remove the last migration created. If migration was already applied to database you have to update first to the previous migration and then remove it.
 
-### `python3 scripts/undo.migrations.py --name Migration_Name`
+### `python3 scripts/migrations.undo.py --name Migration_Name`
 The script will update database to the Migration_Name
 
-### `python3 scripts/apply.migration.py`
+### `python3 scripts/migration.apply.py`
 The script will apply the last migration created.
