@@ -1,6 +1,9 @@
 namespace Presentation
 {
+    using Business.Detection.Common.Repositories;
+    using Business.Detection.Fetching.Commands;
     using Data;
+    using Data.Detection;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
@@ -24,6 +27,8 @@ namespace Presentation
             services.AddScoped<Schema>();
             services.AddScoped<Detection.Creating.IResolver, Detection.Creating.Resolver>();
             services.AddScoped<Detection.Fetching.IResolver, Detection.Fetching.Resolver>();
+            services.AddTransient<IGetDetection, GetDetection>();
+            services.AddTransient<IDetectionRepository, DetectionRepository>();
         }
 
         public void Configure(IApplicationBuilder app, Context context)
