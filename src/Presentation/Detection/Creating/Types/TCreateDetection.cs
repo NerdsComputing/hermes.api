@@ -1,4 +1,4 @@
-namespace Presentation.Detection.Common.Types
+namespace Presentation.Detection.Creating.Types
 {
     using System.Diagnostics.CodeAnalysis;
     using Business.Detection.Creating.Models;
