@@ -1,6 +1,5 @@
 namespace Business.Detection.Fetching.Commands
 {
-    using System;
     using System.Collections.Generic;
     using Business.Detection.Common.Models;
 
