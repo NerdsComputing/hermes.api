@@ -6,16 +6,13 @@ namespace Business.Detection.Fetching.Commands
 
     public class GetDetection : IGetDetection
     {
-        private IDetectionRepository _repository;
+        private readonly IDetectionRepository _repository;
 
         public GetDetection(IDetectionRepository repository)
         {
             _repository = repository;
         }
 
-        public IEnumerable<MDetection> Execute(Nothing input)
-        {
-            return _repository.All();
-        }
+        public IEnumerable<MDetection> Execute(Nothing input) => _repository.ByParameter();
     }
 }
