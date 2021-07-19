@@ -1,4 +1,4 @@
-namespace Business.Detection.Fetching.Commands
+namespace Business.Detection.Common.Commands
 {
     public interface ICommand<in TInput, out TOutput>
     {
