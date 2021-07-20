@@ -2,15 +2,15 @@ namespace Presentation.Detection.Creating
 {
     using System;
     using System.Collections.Generic;
-    using Business.Detection.Common.Models;
+    using Business.Detection.Creating.Models;
     using global::GraphQL;
 
     public class Resolver : IResolver
     {
-        public IEnumerable<MDetection> Execute(IResolveFieldContext<object> input) =>
+        public IEnumerable<MCreateDetection> Execute(IResolveFieldContext<object> input) =>
             new[]
             {
-                new MDetection { Id = 1, Class = "Pet", Score = 60, Timestamp = DateTime.UtcNow },
+                new MCreateDetection() { Class = "Pet", Score = 60, Timestamp = DateTime.UtcNow },
             };
     }
 }
