@@ -1,11 +1,10 @@
-using System;
-using Business.Detection.Common.Models;
-using Data.Detection;
-using NUnit.Framework;
-using Shouldly;
-
-namespace Data.UnitTests.Detection.Common
+namespace Data.UnitTests.Detection
 {
+    using System;
+    using Business.Detection.Common.Models;
+    using Data.Detection;
+    using NUnit.Framework;
+    using Shouldly;
     public class DetectionFactoryTests
     {
         private MDetection _model;
