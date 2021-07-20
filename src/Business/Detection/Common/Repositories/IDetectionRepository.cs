@@ -5,6 +5,6 @@ namespace Business.Detection.Common.Repositories
 
     public interface IDetectionRepository
     {
-        public IEnumerable<MDetection> All();
+        public IEnumerable<MDetection> ByParameter();
     }
 }
