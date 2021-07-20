@@ -8,6 +8,6 @@ namespace Business.Detection.Common.Repositories
     {
         public IEnumerable<MDetection> ByParameter();
 
-        public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> item);
+        public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> input);
     }
 }
