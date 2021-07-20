@@ -27,8 +27,8 @@ namespace Presentation
             services.AddScoped<Schema>();
             services.AddScoped<Detection.Creating.IResolver, Detection.Creating.Resolver>();
             services.AddScoped<Detection.Fetching.IResolver, Detection.Fetching.Resolver>();
-            services.AddTransient<IGetDetection, GetDetection>();
-            services.AddTransient<IDetectionRepository, DetectionRepository>();
+            services.AddScoped<IGetDetection, GetDetection>();
+            services.AddScoped<IDetectionRepository, DetectionRepository>();
         }
 
         public void Configure(IApplicationBuilder app, Context context)
