@@ -6,4 +6,8 @@
         <InformationalVersion>2021.0.0.Branch.Sha</InformationalVersion>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Detection\Common\Commands" />
+    </ItemGroup>
+
 </Project>

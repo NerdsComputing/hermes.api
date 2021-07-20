@@ -1,4 +1,4 @@
-namespace Business.Detection.Common.Commands
+namespace Business
 {
     public interface ICommand<in TInput, out TOutput>
     {
