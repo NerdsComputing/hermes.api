@@ -9,10 +9,7 @@ namespace Presentation.Detection.Fetching
     {
         private readonly IGetDetection _getDetection;
 
-        public Resolver(IGetDetection getDetection)
-        {
-            _getDetection = getDetection;
-        }
+        public Resolver(IGetDetection getDetection) => _getDetection = getDetection;
 
         public IEnumerable<MDetection> Execute(IResolveFieldContext<object> input) =>
             _getDetection.Execute(new Nothing());
