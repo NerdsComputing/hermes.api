@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DB850BCB-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{608C2B67-AF76-4D80-8294-AA104CEF8117}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryDetectionTests", "FactoryDetectionTests\FactoryDetectionTests.csproj", "{C82EDC11-8197-4E1C-9971-2F82690B52A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectionFactory", "DetectionFactory\DetectionFactory.csproj", "{C82EDC11-8197-4E1C-9971-2F82690B52A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
