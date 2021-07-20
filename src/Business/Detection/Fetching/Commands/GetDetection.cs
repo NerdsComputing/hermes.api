@@ -8,10 +8,7 @@ namespace Business.Detection.Fetching.Commands
     {
         private readonly IDetectionRepository _repository;
 
-        public GetDetection(IDetectionRepository repository)
-        {
-            _repository = repository;
-        }
+        public GetDetection(IDetectionRepository repository) => _repository = repository;
 
         public IEnumerable<MDetection> Execute(Nothing input) => _repository.ByParameter();
     }
