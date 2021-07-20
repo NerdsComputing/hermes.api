@@ -1,11 +1,11 @@
+using System;
+using Business.Detection.Common.Models;
+using Data.Detection;
+using NUnit.Framework;
+using Shouldly;
+
 namespace Data.UnitTests.Detection.Common
 {
-    using System;
-    using Business.Detection.Common.Models;
-    using Data.Detection;
-    using NUnit.Framework;
-    using Shouldly;
-
     public class DetectionFactoryTests
     {
         private MDetection _model;
@@ -25,7 +25,7 @@ namespace Data.UnitTests.Detection.Common
 
             _model.ShouldBeEquivalentTo(outputDetection);
         }
-        
+
         private static EDetection CreateEntity() => new()
         {
             Id = 1,
