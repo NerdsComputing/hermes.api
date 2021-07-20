@@ -11,6 +11,7 @@ namespace Presentation
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Presentation.GraphQL.Base;
+    using Seeds;
 
     public class Startup
     {
@@ -21,7 +22,6 @@ namespace Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = _config.GetSection("Database").GetValue<string>("ConnectionString");
-
             services.AddDbContext<Context>(options => options.UseMySQL(connectionString));
             services.AddControllers();
 
@@ -38,6 +38,8 @@ namespace Presentation
             ConfigureEnvironment(app);
             ConfigureDatabase(context);
             ConfigureEndpoints(app);
+            DetectionSeed seed = new DetectionSeed(context);
+            seed.Execute();
         }
 
         private void ConfigureEnvironment(IApplicationBuilder app)
