@@ -14,7 +14,7 @@ namespace FactoryDetectionTests
         }
 
         [Test]
-        public void Test1()
+        public void DetectionFactoryTest()
         {
             var actualDetection = new MDetection {
                 Id = 1,
