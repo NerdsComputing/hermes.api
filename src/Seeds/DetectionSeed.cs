@@ -1,10 +1,11 @@
 namespace Seeds
 {
-    using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using Business.Seeds;
     using Data;
+    using Newtonsoft.Json;
 
     public class DetectionSeed : ISeeds
     {
@@ -17,15 +18,13 @@ namespace Seeds
 
         public void Execute()
         {
-            var detections = new List<EDetection>
-            {
-                new EDetection { Class = "plastic", Score = 10, Timestamp = DateTime.UtcNow },
-                new EDetection { Class = "glass", Score = 5, Timestamp = DateTime.UtcNow },
-                new EDetection { Class = "bottle", Score = 5, Timestamp = DateTime.UtcNow },
-            };
+            const string jsonPath = "/home/bianca/Hermes/hermes.api/src/Seeds/Data/detections.json";
+            var json = File.ReadAllText(jsonPath);
+            List<EDetection> detections = JsonConvert.DeserializeObject<List<EDetection>>(json);
 
             foreach (var detection in detections.Where(detection => !_context.Detections
-                .Any(existingDetection => existingDetection.Class == detection.Class && existingDetection.Score == detection.Score)))
+                .Any(existingDetection =>
+                    existingDetection.Class == detection.Class && existingDetection.Score == detection.Score)))
             {
                 _context.Detections.Add(detection);
             }

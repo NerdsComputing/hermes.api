@@ -1,5 +1,11 @@
-{
+[{
   "class": "pet",
   "score": 1,
   "timestamp": "5/1/2021 8:30:52AM"
-}
+},
+{
+"class": "glass",
+"score": 7,
+"timestamp": "5/1/2021 8:30:52AM"
+}]
+
