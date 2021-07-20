@@ -1,3 +1,4 @@
+using System;
 using Business.Detection.Common.Models;
 using Data;
 using Data.Detection;
@@ -8,27 +9,38 @@ namespace FactoryDetectionTests
 {
     public class ConvertDetection
     {
+        private MDetection _model;
+        private EDetection _entity;
+
         [SetUp]
         public void Setup()
         {
+            _model = CreateModel();
+            _entity = CreateEntity();
         }
 
         [Test]
-        public void DetectionFactoryTest()
+        public void Factory_ShouldConvert_Entity()
         {
-            var actualDetection = new MDetection {
-                Id = 1,
-                Class = "Class",
-                Score = 100
-            };
-            var testDetection = new EDetection {
-                Id = 1,
-                Class = "Class",
-                Score = 100
-            };
-            var outputDetection = DetectionFactory.MakeModel(testDetection);
-            
-            actualDetection.Should().BeEquivalentTo(outputDetection);
+            var outputDetection = DetectionFactory.MakeModel(_entity);
+
+            _model.Should().BeEquivalentTo(outputDetection);
         }
+        
+        private static EDetection CreateEntity() => new EDetection
+        {
+            Id = 1,
+            Class = "Class",
+            Score = 100,
+            Timestamp = new DateTime(2021, 07, 20)
+        };
+
+        private static MDetection CreateModel() => new MDetection
+        {
+            Id = 1,
+            Class = "Class",
+            Score = 100,
+            Timestamp = new DateTime(2021, 07, 20)
+        };
     }
 }
