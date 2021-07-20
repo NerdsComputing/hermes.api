@@ -1,5 +1,6 @@
 namespace Business.Detection.Creating.Commands
 {
+    using System.Collections.Generic;
     using Business.Detection.Common.Models;
     using Business.Detection.Common.Repositories;
     using Business.Detection.Creating.Models;
@@ -8,11 +9,8 @@ namespace Business.Detection.Creating.Commands
     {
         private readonly IDetectionRepository _repository;
 
-        public CreateDetection(IDetectionRepository repository)
-        {
-            _repository = repository;
-        }
+        public CreateDetection(IDetectionRepository repository) => _repository = repository;
 
-        public MDetection Execute(MCreateDetection input) => _repository.Create(input);
+        public IEnumerable<MDetection> Execute(IEnumerable<MCreateDetection> input) => _repository.Insert(input);
     }
 }
