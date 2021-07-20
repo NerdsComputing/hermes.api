@@ -1,13 +1,12 @@
-using System;
-using Business.Detection.Common.Models;
-using Data;
-using Data.Detection;
-using FluentAssertions;
-using NUnit.Framework;
-
-namespace FactoryDetectionTests
+namespace Data.UnitTests.Detection.Common
 {
-    public class ConvertDetection
+    using System;
+    using Business.Detection.Common.Models;
+    using Data.Detection;
+    using NUnit.Framework;
+    using Shouldly;
+
+    public class DetectionFactoryTests
     {
         private MDetection _model;
         private EDetection _entity;
@@ -24,7 +23,7 @@ namespace FactoryDetectionTests
         {
             var outputDetection = DetectionFactory.MakeModel(_entity);
 
-            _model.Should().BeEquivalentTo(outputDetection);
+            _model.ShouldBeEquivalentTo(outputDetection);
         }
         
         private static EDetection CreateEntity() => new()
