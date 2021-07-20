@@ -9,7 +9,7 @@ namespace Presentation.GraphQL.Base
     {
         public Schema(IServiceProvider provider)
         {
-            Mutation = new Mutation();
+            Mutation = new Mutation(provider);
 
             Query = new Query(provider);
         }
