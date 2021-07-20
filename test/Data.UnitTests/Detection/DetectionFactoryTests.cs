@@ -5,6 +5,7 @@ namespace Data.UnitTests.Detection
     using Data.Detection;
     using NUnit.Framework;
     using Shouldly;
+
     public class DetectionFactoryTests
     {
         private MDetection _model;
@@ -25,20 +26,20 @@ namespace Data.UnitTests.Detection
             _model.ShouldBeEquivalentTo(outputDetection);
         }
 
-        private static EDetection CreateEntity() => new()
+        private static EDetection CreateEntity() => new ()
         {
             Id = 1,
             Class = "Class",
             Score = 100,
-            Timestamp = new DateTime(2021, 07, 20)
+            Timestamp = new DateTime(2021, 07, 20),
         };
 
-        private static MDetection CreateModel() => new()
+        private static MDetection CreateModel() => new ()
         {
             Id = 1,
             Class = "Class",
             Score = 100,
-            Timestamp = new DateTime(2021, 07, 20)
+            Timestamp = new DateTime(2021, 07, 20),
         };
     }
 }
