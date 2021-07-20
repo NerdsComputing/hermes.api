@@ -8,7 +8,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="$(SolutionDir)/test/Style/Style.csproj" />
+        <ProjectReference Include="$(SolutionDir)/src/Style/Style.csproj" />
     </ItemGroup>
 
     <ItemGroup>
