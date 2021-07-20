@@ -1,7 +1,7 @@
 namespace Presentation.Detection.Creating
 {
     using System.Collections.Generic;
-    using Business.Detection.Common.Commands;
+    using Business;
     using Business.Detection.Common.Models;
     using Business.Detection.Creating.Models;
     using Business.Detection.Fetching.Commands;

@@ -1,7 +1,7 @@
 namespace Presentation.Detection.Fetching
 {
     using System.Collections.Generic;
-    using Business.Detection.Common.Commands;
+    using Business;
     using Business.Detection.Common.Models;
     using global::GraphQL;
 
