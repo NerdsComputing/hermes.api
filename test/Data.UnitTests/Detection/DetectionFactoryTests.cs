@@ -17,7 +17,7 @@ namespace Data.UnitTests.Detection
         public void Setup()
         {
             _model = CreateModel();
-            _modelCreate = CreateDetection();
+            _modelCreate = CreateInput();
             _entity = CreateEntity();
         }
 
@@ -30,7 +30,7 @@ namespace Data.UnitTests.Detection
         }
 
         [Test]
-        public void Factory_shouldConvert_MCreateDetection()
+        public void Factory_ShouldConvert_Input()
         {
             var outputDetection = DetectionFactory.MakeEntity(_modelCreate);
 
@@ -45,7 +45,7 @@ namespace Data.UnitTests.Detection
             Timestamp = new DateTime(2021, 07, 20),
         };
 
-        private static MCreateDetection CreateDetection() => new ()
+        private static MCreateDetection CreateInput() => new ()
         {
             Class = "Class",
             Score = 100,
