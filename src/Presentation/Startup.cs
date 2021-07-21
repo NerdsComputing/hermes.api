@@ -42,6 +42,11 @@ namespace Presentation
             ConfigureEnvironment(app);
             ConfigureDatabase(context);
             ConfigureEndpoints(app);
+            ConfigureSeeds(seeds);
+        }
+
+        private static void ConfigureSeeds(IEnumerable<ISeed> seeds)
+        {
             foreach (var seed in seeds)
             {
                 seed.Execute();
