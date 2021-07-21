@@ -1,6 +1,6 @@
 namespace Business.Seeds
 {
-public interface ISeeds
+public interface ISeed
     {
         public void Execute();
     }
