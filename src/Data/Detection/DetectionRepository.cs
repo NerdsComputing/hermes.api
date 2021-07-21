@@ -34,12 +34,9 @@ namespace Data.Detection
             return DetectionFactory.MakeModel(result.Entity);
         }
 
-        public IEnumerable<MDetection> ByInput(MCreateDetection detection)
-        {
-            return _context.Set<EDetection>()
+        public IEnumerable<MDetection> ByInput(MCreateDetection detection) => _context.Set<EDetection>()
                 .Where(entity => detection.Class == entity.Class && detection.Score == entity.Score)
                 .ToList()
                 .Select(DetectionFactory.MakeModel);
-        }
     }
 }
