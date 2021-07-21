@@ -1,11 +1,261 @@
 [{
-  "class": "boat",
+  "class": "pet",
+  "score": 1,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+"class": "pet",
+"score": 2,
+"timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "glass",
+  "score": 1,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "glass",
+  "score": 2,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "glass",
+  "score": 3,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "glass",
+  "score": 4,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "glass",
+  "score": 5,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "pet",
+  "score": 3,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "pet",
+  "score": 4,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "pet",
+  "score": 5,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "paper",
+  "score": 1,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "paper",
+  "score": 2,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "paper",
+  "score": 3,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "paper",
+  "score": 4,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "paper",
+  "score": 5,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "plastic",
+  "score": 1,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "plastic",
+  "score": 2,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "plastic",
+  "score": 3,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "plastic",
+  "score": 4,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "plastic",
+  "score": 5,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "aluminium",
+  "score": 1,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "aluminium",
+  "score": 2,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "aluminium",
+  "score": 3,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "aluminium",
+  "score": 4,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "aluminium",
+  "score": 5,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "metal",
+  "score": 1,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "metal",
+  "score": 2,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "metal",
+  "score": 3,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "metal",
+  "score": 4,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "metal",
+  "score": 5,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "tire",
+  "score": 1,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "tire",
+  "score": 2,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "tire",
+  "score": 3,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "tire",
+  "score": 4,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "tire",
+  "score": 5,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "glass",
+  "score": 6,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "glass",
+  "score": 7,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "paper",
+  "score": 7,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "paper",
   "score": 8,
   "timestamp": "5/1/2021 8:30:52AM"
 },
 {
-"class": "glass",
-"score": 7,
-"timestamp": "5/1/2021 8:30:52AM"
+  "class": "organic",
+  "score": 1,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "organic",
+  "score": 2,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "organic",
+  "score": 3,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "organic",
+  "score": 4,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "organic",
+  "score": 5,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "paper",
+  "score": 10,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "glass",
+  "score": 10,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "plastic",
+  "score": 9,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "plastic",
+  "score": 10,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "plastic",
+  "score": 11,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "pet",
+  "score": 7,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "pet",
+  "score": 6,
+  "timestamp": "5/1/2021 8:30:52AM"
+},
+{
+  "class": "pet",
+  "score": 9,
+  "timestamp": "5/1/2021 8:30:52AM"
 }]
 
