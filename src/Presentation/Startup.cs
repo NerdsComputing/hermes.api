@@ -1,6 +1,7 @@
 namespace Presentation
 {
     using Business.Detection.Common.Repositories;
+    using Business.Detection.Creating.Commands;
     using Business.Detection.Fetching.Commands;
     using Data;
     using Data.Detection;
@@ -28,6 +29,7 @@ namespace Presentation
             services.AddScoped<Detection.Creating.IResolver, Detection.Creating.Resolver>();
             services.AddScoped<Detection.Fetching.IResolver, Detection.Fetching.Resolver>();
             services.AddScoped<IGetDetection, GetDetection>();
+            services.AddScoped<ICreateDetection, CreateDetection>();
             services.AddScoped<IDetectionRepository, DetectionRepository>();
         }
 
