@@ -17,14 +17,14 @@ namespace Data.Detection
             .ToList()
             .Select(DetectionFactory.MakeModel);
 
-        public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> input) => new List<MDetection>
-        {
-            new MDetection
+        public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> input) => input
+            .Select(DetectionFactory.MakeEntity)
+            .Select(entity =>
             {
-                Class = "glass",
-                Score = 100,
-                Timestamp = DateTime.UtcNow,
-            },
-        };
+                _context.Add(entity);
+                _context.SaveChanges();
+                return entity;
+            })
+            .Select(DetectionFactory.MakeModel);
     }
 }
