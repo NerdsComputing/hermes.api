@@ -27,10 +27,8 @@ namespace Business.Seeds
 
         private IEnumerable<MCreateDetection> MissingDetections()
         {
-            var detections = _dataFactory.Make<MCreateDetection>("detections.json")
+            return _dataFactory.Make<MCreateDetection>("detections.json")
                 .Where(x => !_repository.ByInput(x).Any());
-
-            return detections;
         }
     }
 }
