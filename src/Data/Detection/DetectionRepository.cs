@@ -1,6 +1,5 @@
 namespace Data.Detection
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Business.Detection.Common.Models;
@@ -19,12 +18,14 @@ namespace Data.Detection
 
         public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> input) => input
             .Select(DetectionFactory.MakeEntity)
-            .Select(entity =>
-            {
-                _context.Add(entity);
-                _context.SaveChanges();
-                return entity;
-            })
+            .Select(InsertDetection)
             .Select(DetectionFactory.MakeModel);
+
+        private EDetection InsertDetection(EDetection entity)
+        {
+            _context.Add(entity);
+            _context.SaveChanges();
+            return entity;
+        }
     }
 }
