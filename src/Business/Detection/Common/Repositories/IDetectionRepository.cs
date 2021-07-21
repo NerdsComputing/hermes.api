@@ -9,5 +9,9 @@ namespace Business.Detection.Common.Repositories
         public IEnumerable<MDetection> ByParameter();
 
         public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> input);
+
+        public MDetection Insert(MCreateDetection input);
+
+        public IEnumerable<MDetection> ByInput(MCreateDetection detection);
     }
 }
