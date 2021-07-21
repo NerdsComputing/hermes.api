@@ -33,32 +33,31 @@ namespace Data.UnitTests.Detection
         public void Factory_shouldConvert_MCreateDetection()
         {
             var outputDetection = DetectionFactory.MakeEntity(_modelCreate);
-            
+
             _entity.ShouldBeEquivalentTo(outputDetection);
         }
 
-        private static EDetection CreateEntity() => new()
         private static EDetection CreateEntity() => new ()
         {
             Id = 0,
             Class = "Class",
             Score = 100,
-            Timestamp = new DateTime(2021, 07, 20)
+            Timestamp = new DateTime(2021, 07, 20),
         };
 
-        private static MCreateDetection CreateDetection() => new()
+        private static MCreateDetection CreateDetection() => new ()
         {
             Class = "Class",
             Score = 100,
-            Timestamp = new DateTime(2021, 07, 20)
+            Timestamp = new DateTime(2021, 07, 20),
         };
-        
-        private static MDetection CreateModel() => new()
+
+        private static MDetection CreateModel() => new ()
         {
             Id = 0,
             Class = "Class",
             Score = 100,
-            Timestamp = new DateTime(2021, 07, 20)
+            Timestamp = new DateTime(2021, 07, 20),
         };
     }
 }
