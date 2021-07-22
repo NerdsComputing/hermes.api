@@ -19,10 +19,7 @@ namespace Business.Seeds
         public void Execute()
         {
             var missingDetections = MissingDetections();
-            foreach (var missingDetection in missingDetections)
-            {
-                _repository.Insert(missingDetection);
-            }
+            _repository.Insert(missingDetections);
         }
 
         private IEnumerable<MCreateDetection> MissingDetections()

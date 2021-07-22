@@ -17,26 +17,22 @@ namespace Data.Detection
             .ToList()
             .Select(DetectionFactory.MakeModel);
 
-        public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> input) => new List<MDetection>
-        {
-            new MDetection
-            {
-                Class = "glass",
-                Score = 100,
-                Timestamp = DateTime.UtcNow,
-            },
-        };
+        public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> input) => input
+            .Select(detection => DetectionFactory.MakeEntity(detection))
+            .Select(InsertDetection)
+            .Select(DetectionFactory.MakeModel)
+            .ToList();
 
-        public MDetection Insert(MCreateDetection input)
+        private EDetection InsertDetection(EDetection entity)
         {
-            var result = _context.Detections.Add(DetectionFactory.MakeEntity(input));
+            _context.Add(entity);
             _context.SaveChanges();
-            return DetectionFactory.MakeModel(result.Entity);
+            return entity;
         }
 
         public IEnumerable<MDetection> ByInput(MCreateDetection detection) => _context.Set<EDetection>()
-                .Where(entity => detection.Class == entity.Class && detection.Score == entity.Score)
-                .ToList()
-                .Select(DetectionFactory.MakeModel);
+            .Where(entity => detection.Class == entity.Class && detection.Score == entity.Score)
+            .ToList()
+            .Select(DetectionFactory.MakeModel);
     }
 }
