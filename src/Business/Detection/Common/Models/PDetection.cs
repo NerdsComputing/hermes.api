@@ -13,6 +13,6 @@ namespace Business.Detection.Common.Models
 
         public DateTime Timestamp { get; set; }
 
-        public PPagination PPagination { get; set; }
+        public PPagination Pagination { get; set; } = new PPagination();
     }
 }
