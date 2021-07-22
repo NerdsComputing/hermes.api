@@ -1,4 +1,4 @@
-namespace Business.Detection.Common.Models
+namespace Business.Detection.Fetching.Models
 {
     using System;
     using Business.Pagination;
