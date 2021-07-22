@@ -17,7 +17,7 @@ namespace Presentation.GraphQL.Base
             Field(typeof(NonNullGraphType<ListGraphType<NonNullGraphType<TDetection>>>),
                 "detections",
                 "Fetch all the existing detections",
-                resolve: provider.GetService<Detection.Fetching.IResolver>().Execute);
+                resolve: input => provider.GetService<Detection.Fetching.IResolver>().Execute(input));
         }
     }
 }
