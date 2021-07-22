@@ -14,7 +14,9 @@
 
     <ItemGroup>
       <None Remove="Data\detections.json" />
-      <EmbeddedResource Include="Data\detections.json" />
+      <Content Include="Data\detections.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
