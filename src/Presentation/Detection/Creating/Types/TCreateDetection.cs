@@ -6,7 +6,7 @@ namespace Presentation.Detection.Creating.Types
     using Style;
 
     [SuppressMessage(Category.Default, Check.CA1724, Justification = Reason.Readability)]
-    public sealed class TCreateDetection : ObjectGraphType<MCreateDetection>
+    public sealed class TCreateDetection : InputObjectGraphType<MCreateDetection>
     {
         public TCreateDetection()
         {

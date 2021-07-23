@@ -3,6 +3,7 @@ namespace Presentation.GraphQL.Base
     using System;
     using global::GraphQL.Types;
     using Microsoft.Extensions.DependencyInjection;
+    using Presentation.Detection.Common.Types;
     using Presentation.Detection.Creating.Types;
 
     public class Mutation : ObjectGraphType
@@ -10,10 +11,18 @@ namespace Presentation.GraphQL.Base
         public Mutation(IServiceProvider provider)
         {
             Name = "mutation";
-            Field(typeof(NonNullGraphType<ListGraphType<NonNullGraphType<TCreateDetection>>>),
+
+            Field(typeof(NonNullGraphType<ListGraphType<NonNullGraphType<TDetection>>>),
                 "createDetection",
                 "Creates a detection",
-                resolve: provider.GetService<Detection.Creating.IResolver>().Execute);
+                arguments: CreateDetectionArguments(),
+                resolve: input => provider.GetService<Detection.Creating.IResolver>().Execute(input));
         }
+
+        private static QueryArguments CreateDetectionArguments() => new (new QueryArgument(
+            typeof(NonNullGraphType<ListGraphType<NonNullGraphType<TCreateDetection>>>))
+        {
+            Name = "input",
+        });
     }
 }
