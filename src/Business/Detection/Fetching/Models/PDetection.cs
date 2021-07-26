@@ -14,5 +14,7 @@ namespace Business.Detection.Fetching.Models
         public DateTime Timestamp { get; set; }
 
         public PPagination Pagination { get; set; } = new PPagination();
+
+        public string CameraId { get; set; }
     }
 }
