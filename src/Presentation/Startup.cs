@@ -1,11 +1,13 @@
 namespace Presentation
 {
     using System.Collections.Generic;
+    using Business.Camera.Common.Repositories;
     using Business.Detection.Common.Repositories;
     using Business.Detection.Creating.Commands;
     using Business.Detection.Fetching.Commands;
     using Business.Seeds;
     using Data;
+    using Data.Camera;
     using Data.Detection;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
@@ -35,6 +37,7 @@ namespace Presentation
             services.AddScoped<IDetectionRepository, DetectionRepository>();
             services.AddScoped<ISeed, Business.Seeds.DetectionSeed>();
             services.AddScoped<IDataFactory, DataFactory>();
+            services.AddScoped<ICameraRepository, CameraRepository>();
         }
 
         public void Configure(IApplicationBuilder app, Context context, IEnumerable<ISeed> seeds)
