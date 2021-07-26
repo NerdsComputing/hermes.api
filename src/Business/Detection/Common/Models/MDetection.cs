@@ -1,6 +1,7 @@
 namespace Business.Detection.Common.Models
 {
     using System;
+    using Business.Camera.Common.Models;
 
     public class MDetection
     {
@@ -11,5 +12,7 @@ namespace Business.Detection.Common.Models
         public string Class { get; set; }
 
         public DateTime Timestamp { get; set; }
+
+        public MCamera Camera { get; set; }
     }
 }

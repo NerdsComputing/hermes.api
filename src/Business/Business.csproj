@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <Folder Include="Camera\Common" />
-      <Folder Include="Detection\Common\Commands" />
     </ItemGroup>
 
 </Project>
