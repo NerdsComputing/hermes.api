@@ -4,6 +4,7 @@ namespace Data.Camera
     using System.Linq;
     using Business.Camera.Common.Models;
     using Business.Camera.Common.Repositories;
+    using Business.Camera.Fetching.Models;
     using Business.Camera.Register.Models;
 
     public class CameraRepository : ICameraRepository
@@ -20,6 +21,10 @@ namespace Data.Camera
             .Select(InsertCamera)
             .Select(CameraFactory.MakeModel)
             .ToList();
+
+        public IEnumerable<MCamera> ByParameter(PCamera parameter) => _context.Set<ECamera>()
+            .ToList()
+            .Select(CameraFactory.MakeModel);
 
         private ECamera InsertCamera(ECamera entity)
         {
