@@ -6,6 +6,6 @@ namespace Business.Camera.Common.Repositories
 
     public interface ICameraRepository
     {
-        public IEnumerable<MCamera> Insert(IEnumerable<MRegisterCamera> input);
+        public MCamera Insert(MRegisterCamera input);
     }
 }
