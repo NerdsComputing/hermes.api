@@ -9,5 +9,7 @@ namespace Business.Detection.Creating.Models
         public string Class { get; set; }
 
         public DateTime Timestamp { get; set; }
+
+        public string CameraId { get; set; }
     }
 }
