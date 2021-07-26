@@ -25,6 +25,12 @@ namespace Data.Camera
             .Select(CameraFactory.MakeModel)
             .ToList();
 
+        public IEnumerable<MCamera> ByInput(MRegisterCamera camera) => _context.Set<ECamera>()
+            .Where(entity => camera.Id == entity.Id && camera.Latitude == entity.Latitude &&
+                             camera.Longitude == entity.Longitude)
+            .ToList()
+            .Select(CameraFactory.MakeModel);
+
         public IEnumerable<MCamera> ByParameter(PCamera parameter)
         {
             var cameras = _context.Set<ECamera>();

@@ -9,6 +9,8 @@ namespace Business.Camera.Common.Repositories
     {
         public IEnumerable<MCamera> Insert(IEnumerable<MRegisterCamera> input);
 
+        public IEnumerable<MCamera> ByInput(MRegisterCamera camera);
+
         public IEnumerable<MCamera> ByParameter(PCamera parameter);
     }
 }
