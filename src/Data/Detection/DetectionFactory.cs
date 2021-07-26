@@ -5,7 +5,7 @@ namespace Data.Detection
 
     public static class DetectionFactory
     {
-        public static MDetection MakeModel(EDetection entity) => new MDetection
+        public static MDetection MakeModel(EDetection entity) => new ()
         {
             Id = entity.Id,
             Class = entity.Class,

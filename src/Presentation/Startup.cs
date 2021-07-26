@@ -1,8 +1,10 @@
 namespace Presentation
 {
+    using System.Collections.Generic;
     using Business.Detection.Common.Repositories;
     using Business.Detection.Creating.Commands;
     using Business.Detection.Fetching.Commands;
+    using Business.Seeds;
     using Data;
     using Data.Detection;
     using Microsoft.AspNetCore.Builder;
@@ -11,6 +13,7 @@ namespace Presentation
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Presentation.GraphQL.Base;
+    using Seeds;
 
     public class Startup
     {
@@ -21,7 +24,6 @@ namespace Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = _config.GetSection("Database").GetValue<string>("ConnectionString");
-
             services.AddDbContext<Context>(options => options.UseMySQL(connectionString));
             services.AddControllers();
 
@@ -31,13 +33,24 @@ namespace Presentation
             services.AddScoped<IGetDetection, GetDetection>();
             services.AddScoped<ICreateDetection, CreateDetection>();
             services.AddScoped<IDetectionRepository, DetectionRepository>();
+            services.AddScoped<ISeed, Business.Seeds.DetectionSeed>();
+            services.AddScoped<IDataFactory, DataFactory>();
         }
 
-        public void Configure(IApplicationBuilder app, Context context)
+        public void Configure(IApplicationBuilder app, Context context, IEnumerable<ISeed> seeds)
         {
             ConfigureEnvironment(app);
             ConfigureDatabase(context);
             ConfigureEndpoints(app);
+            ConfigureSeeds(seeds);
+        }
+
+        private static void ConfigureSeeds(IEnumerable<ISeed> seeds)
+        {
+            foreach (var seed in seeds)
+            {
+                seed.Execute();
+            }
         }
 
         private void ConfigureEnvironment(IApplicationBuilder app)

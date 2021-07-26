@@ -1,5 +1,6 @@
 namespace Data.Detection
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Business.Detection.Common.Models;
@@ -17,9 +18,10 @@ namespace Data.Detection
             .Select(DetectionFactory.MakeModel);
 
         public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> input) => input
-            .Select(DetectionFactory.MakeEntity)
+            .Select(detection => DetectionFactory.MakeEntity(detection))
             .Select(InsertDetection)
-            .Select(DetectionFactory.MakeModel);
+            .Select(DetectionFactory.MakeModel)
+            .ToList();
 
         private EDetection InsertDetection(EDetection entity)
         {
@@ -27,5 +29,10 @@ namespace Data.Detection
             _context.SaveChanges();
             return entity;
         }
+
+        public IEnumerable<MDetection> ByInput(MCreateDetection detection) => _context.Set<EDetection>()
+            .Where(entity => detection.Class == entity.Class && detection.Score == entity.Score)
+            .ToList()
+            .Select(DetectionFactory.MakeModel);
     }
 }

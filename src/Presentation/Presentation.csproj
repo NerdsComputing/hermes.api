@@ -8,6 +8,7 @@
    <ItemGroup>
          <ProjectReference Include="..\Data\Data.csproj" />
          <ProjectReference Include="..\Business\Business.csproj" />
+         <ProjectReference Include="..\Seeds\Seeds.csproj" />
    </ItemGroup>
 
     <ItemGroup>
@@ -23,5 +24,13 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
 
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Update="Settings\settings.default.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
     </ItemGroup>
 </Project>
