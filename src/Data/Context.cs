@@ -6,6 +6,8 @@ namespace Data
     {
         public DbSet<EDetection> Detections { get; set; }
 
+        public DbSet<ECamera> Cameras { get; set; }
+
         public Context(DbContextOptions<Context> options) : base(options)
         {
         }
