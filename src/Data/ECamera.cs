@@ -8,9 +8,9 @@ namespace Data
         public string Id { get; set; }
 
         [Required]
-        public int Latitude { get; set; }
+        public string Latitude { get; set; }
 
         [Required]
-        public int Longitude { get; set; }
+        public string Longitude { get; set; }
     }
 }
