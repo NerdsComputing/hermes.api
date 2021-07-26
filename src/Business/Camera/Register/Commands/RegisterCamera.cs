@@ -1,5 +1,6 @@
 namespace Business.Camera.Register.Commands
 {
+    using System.Collections.Generic;
     using Business.Camera.Common.Models;
     using Business.Camera.Common.Repositories;
     using Business.Camera.Register.Models;
@@ -10,6 +11,6 @@ namespace Business.Camera.Register.Commands
 
         public RegisterCamera(ICameraRepository repository) => _repository = repository;
 
-        public MCamera Execute(MRegisterCamera input) => _repository.Insert(input);
+        public IEnumerable<MCamera> Execute(MRegisterCamera input) => _repository.Insert(new List<MRegisterCamera> { input });
     }
 }
