@@ -1,4 +1,4 @@
-namespace Presentation.Camera.Fetching.Models
+namespace Presentation.Camera.Fetching.Types
 {
     using System.Diagnostics.CodeAnalysis;
     using Business.Camera.Fetching.Models;
