@@ -13,6 +13,7 @@ namespace Presentation.Detection.Creating.Types
             Field(detection => detection.Score).Description("This is the Score");
             Field(detection => detection.Timestamp).Description("This is the Timestamp");
             Field(detection => detection.Class).Description("This is the Class");
+            Field(detection => detection.CameraId).Description("This is the CameraId");
         }
     }
 }
