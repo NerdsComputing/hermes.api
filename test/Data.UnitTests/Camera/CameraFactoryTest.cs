@@ -10,13 +10,13 @@ namespace Data.UnitTests.Camera
     {
         private MCamera _model;
         private ECamera _entity;
-        private MRegisterCamera _modelCreate;
+        private MRegisterCamera _input;
 
         [SetUp]
         public void Setup()
         {
             _model = CreateModel();
-            _modelCreate = CreateInput();
+            _input = CreateInput();
             _entity = CreateEntity();
         }
 
@@ -31,7 +31,7 @@ namespace Data.UnitTests.Camera
         [Test]
         public void Factory_ShouldConvert_Input()
         {
-            var outputDetection = CameraFactory.MakeEntity(_modelCreate);
+            var outputDetection = CameraFactory.MakeEntity(_input);
 
             _entity.ShouldBeEquivalentTo(outputDetection);
         }
