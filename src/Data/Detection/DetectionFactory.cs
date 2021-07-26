@@ -18,6 +18,7 @@ namespace Data.Detection
             Class = model.Class,
             Score = model.Score,
             Timestamp = model.Timestamp,
+            CameraId = model.CameraId,
         };
     }
 }

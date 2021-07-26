@@ -16,5 +16,8 @@ namespace Data
 
         [Required]
         public DateTime Timestamp { get; set; }
+
+        [Required]
+        public string CameraId { get; set; }
     }
 }
