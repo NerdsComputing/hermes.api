@@ -11,7 +11,6 @@ namespace Data.Detection
             Class = entity.Class,
             Score = entity.Score,
             Timestamp = entity.Timestamp,
-            CameraId = entity.CameraId,
         };
 
         public static EDetection MakeEntity(MCreateDetection model) => new EDetection
@@ -19,7 +18,7 @@ namespace Data.Detection
             Class = model.Class,
             Score = model.Score,
             Timestamp = model.Timestamp,
-            CameraId = entity.CameraId
+            CameraId = model.CameraId,
         };
     }
 }

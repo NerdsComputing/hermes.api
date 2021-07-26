@@ -18,7 +18,7 @@ namespace Data.Detection
             .Select(DetectionFactory.MakeModel);
 
         public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> input) => input
-            .Select(detection => DetectionFactory.MakeEntity(detection))
+            .Select(DetectionFactory.MakeEntity)
             .Select(InsertDetection)
             .Select(DetectionFactory.MakeModel)
             .ToList();

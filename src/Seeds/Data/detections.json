@@ -255,7 +255,8 @@
 },
 {
   "class": "pet",
-  "score": 9,
-  "timestamp": "5/1/2021 8:30:52AM"
+  "score": 20,
+  "timestamp": "5/1/2021 8:30:52AM",
+  "cameraid": "first"
 }]
 
