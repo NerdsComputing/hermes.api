@@ -5,11 +5,11 @@ namespace Business.Camera.Fetching.Commands
     using Business.Camera.Common.Repositories;
     using Business.Camera.Fetching.Models;
 
-    public class GetCamera : IGetCamera
+    public class GetCameras : IGetCameras
     {
         private readonly ICameraRepository _repository;
 
-        public GetCamera(ICameraRepository repository) => _repository = repository;
+        public GetCameras(ICameraRepository repository) => _repository = repository;
 
         public IEnumerable<MCamera> Execute(PCamera input) => _repository.ByParameter(input);
     }

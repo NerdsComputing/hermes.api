@@ -4,7 +4,7 @@ namespace Business.Camera.Fetching.Commands
     using Business.Camera.Common.Models;
     using Business.Camera.Fetching.Models;
 
-    public interface IGetCamera : ICommand<PCamera, IEnumerable<MCamera>>
+    public interface IGetCameras : ICommand<PCamera, IEnumerable<MCamera>>
     {
     }
 }

@@ -46,7 +46,7 @@ namespace Presentation
             services.AddScoped<IRegisterCamera, RegisterCamera>();
             services.AddScoped<ISeedFilter, SeedFilter>();
             services.AddScoped<ICameraFilter, CameraFilter>();
-            services.AddScoped<IGetCamera, GetCamera>();
+            services.AddScoped<IGetCameras, GetCameras>();
         }
 
         public void Configure(IApplicationBuilder app, Context context, IEnumerable<ISeed> seeds)
