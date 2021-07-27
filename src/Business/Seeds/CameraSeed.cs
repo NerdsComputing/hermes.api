@@ -18,14 +18,16 @@ namespace Business.Seeds
 
         public void Execute()
         {
-            var missingCameras = MissingCameras();
+            var missingCameras = MissingCameras().ToList();
             _repository.Insert(missingCameras);
         }
 
-        private IEnumerable<MRegisterCamera> MissingCameras()
-        {
-            return _dataFactory.Make<MRegisterCamera>("cameras.json")
-                .Where(cameras => !_repository.ByInput(cameras).Any());
-        }
+        private IEnumerable<MRegisterCamera> MissingCameras() => _dataFactory
+            .Make<MRegisterCamera>("cameras.json")
+            .Where(cameras =>
+            {
+                var one = _repository.ByInput(cameras).ToList();
+                return !_repository.ByInput(cameras).Any();
+            });
     }
 }

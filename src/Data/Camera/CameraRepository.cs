@@ -11,12 +11,14 @@ namespace Data.Camera
     public class CameraRepository : ICameraRepository
     {
         private readonly Context _context;
+        private readonly ISeedFilter _seedFilter;
         private readonly ICameraFilter _filter;
 
-        public CameraRepository(Context context, ICameraFilter filter)
+        public CameraRepository(Context context, ICameraFilter filter, ISeedFilter seedFilter)
         {
             _context = context;
             _filter = filter;
+            _seedFilter = seedFilter;
         }
 
         public IEnumerable<MCamera> Insert(IEnumerable<MRegisterCamera> input) => input
@@ -25,16 +27,20 @@ namespace Data.Camera
             .Select(CameraFactory.MakeModel)
             .ToList();
 
-        public IEnumerable<MCamera> ByInput(MRegisterCamera camera) => _context.Set<ECamera>()
-            .Where(entity => camera.Id == entity.Id && camera.Latitude == entity.Latitude &&
-                             camera.Longitude == entity.Longitude)
-            .ToList()
-            .Select(CameraFactory.MakeModel);
-
         public IEnumerable<MCamera> ByParameter(PCamera parameter)
         {
             var cameras = _context.Set<ECamera>();
             return _filter.With(parameter).Execute(cameras)
+                .ToList()
+                .Select(CameraFactory.MakeModel);
+        }
+
+        public IEnumerable<MCamera> ByInput(MRegisterCamera camera)
+        {
+            var cameras = _context.Set<ECamera>();
+
+            return _seedFilter.With(camera)
+                .Execute(cameras)
                 .ToList()
                 .Select(CameraFactory.MakeModel);
         }
