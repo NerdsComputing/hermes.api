@@ -11,7 +11,7 @@
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql("UPDATE Detections SET CameraId= ''");
+            migrationBuilder.Sql("UPDATE Detections SET CameraId= 'Default'");
         }
     }
 }
