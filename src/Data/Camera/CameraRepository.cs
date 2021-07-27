@@ -6,14 +6,17 @@ namespace Data.Camera
     using Business.Camera.Common.Repositories;
     using Business.Camera.Fetching.Models;
     using Business.Camera.Register.Models;
+    using Data.Camera.Filtering;
 
     public class CameraRepository : ICameraRepository
     {
         private readonly Context _context;
+        private readonly CameraFilter _filter;
 
-        public CameraRepository(Context context)
+        public CameraRepository(Context context, CameraFilter filter)
         {
             _context = context;
+            _filter = filter;
         }
 
         public IEnumerable<MCamera> Insert(IEnumerable<MRegisterCamera> input) => input
@@ -22,9 +25,13 @@ namespace Data.Camera
             .Select(CameraFactory.MakeModel)
             .ToList();
 
-        public IEnumerable<MCamera> ByParameter(PCamera parameter) => _context.Set<ECamera>()
-            .ToList()
-            .Select(CameraFactory.MakeModel);
+        public IEnumerable<MCamera> ByParameter(PCamera parameter)
+        {
+            var cameras = _context.Set<ECamera>();
+            return _filter.With(parameter).Execute(cameras)
+                .ToList()
+                .Select(CameraFactory.MakeModel);
+        }
 
         private ECamera InsertCamera(ECamera entity)
         {
