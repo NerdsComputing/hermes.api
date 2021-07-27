@@ -12,6 +12,7 @@ namespace Presentation
     using Data.Camera;
     using Data.Camera.Filtering;
     using Data.Detection;
+    using Data.Detection.Filtering;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
