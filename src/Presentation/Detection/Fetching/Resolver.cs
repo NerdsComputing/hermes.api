@@ -1,8 +1,10 @@
 namespace Presentation.Detection.Fetching
 {
+    using System;
     using System.Collections.Generic;
     using Business.Detection.Common.Models;
     using Business.Detection.Fetching.Commands;
+    using Business.Detection.Fetching.Models;
     using global::GraphQL;
 
     public class Resolver : IResolver
@@ -11,7 +13,11 @@ namespace Presentation.Detection.Fetching
 
         public Resolver(IGetDetection getDetection) => _getDetection = getDetection;
 
-        public IEnumerable<MDetection> Execute(IResolveFieldContext<object> input) =>
-            _getDetection.Execute(new Nothing());
+        public IEnumerable<MDetection> Execute(IResolveFieldContext<object> input)
+        {
+            var detections = _getDetection.Execute(new PDetection());
+
+            return detections;
+        }
     }
 }
