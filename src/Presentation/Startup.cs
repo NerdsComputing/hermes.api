@@ -8,6 +8,7 @@ namespace Presentation
     using Business.Seeds;
     using Data;
     using Data.Camera;
+    using Data.Camera.Filtering;
     using Data.Detection;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
@@ -38,6 +39,7 @@ namespace Presentation
             services.AddScoped<ISeed, Business.Seeds.DetectionSeed>();
             services.AddScoped<IDataFactory, DataFactory>();
             services.AddScoped<ICameraRepository, CameraRepository>();
+            services.AddScoped<ICameraFilter, CameraFilter>();
         }
 
         public void Configure(IApplicationBuilder app, Context context, IEnumerable<ISeed> seeds)
