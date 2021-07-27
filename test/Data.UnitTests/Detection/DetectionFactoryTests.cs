@@ -1,6 +1,7 @@
 namespace Data.UnitTests.Detection
 {
     using System;
+    using Business.Camera.Common.Models;
     using Business.Detection.Common.Models;
     using Business.Detection.Creating.Models;
     using Data.Detection;
@@ -43,6 +44,12 @@ namespace Data.UnitTests.Detection
             Class = "Class",
             Score = 100,
             Timestamp = new DateTime(2021, 07, 20),
+            Camera = new ECamera
+            {
+                Id = "1",
+                Latitude = "1",
+                Longitude = "1",
+            },
         };
 
         private static MCreateDetection CreateInput() => new ()
@@ -58,6 +65,12 @@ namespace Data.UnitTests.Detection
             Class = "Class",
             Score = 100,
             Timestamp = new DateTime(2021, 07, 20),
+            Camera = new MCamera
+            {
+                Id = "1",
+                Latitude = "1",
+                Longitude = "1",
+            },
         };
     }
 }
