@@ -39,10 +39,11 @@ namespace Presentation
             services.AddScoped<IGetDetection, GetDetection>();
             services.AddScoped<ICreateDetection, CreateDetection>();
             services.AddScoped<IDetectionRepository, DetectionRepository>();
-            services.AddScoped<ISeed, Business.Seeds.DetectionSeed>();
-            services.AddScoped<ISeed, Business.Seeds.CameraSeed>();
+            services.AddScoped<ISeed, DetectionSeed>();
             services.AddScoped<IDataFactory, DataFactory>();
             services.AddScoped<ICameraRepository, CameraRepository>();
+            services.AddScoped<ICameraFilter, CameraFilter>();
+            services.AddScoped<IDetectionFilter, DetectionFilter>();
             services.AddScoped<Camera.Register.IResolver, Camera.Register.Resolver>();
             services.AddScoped<IRegisterCamera, RegisterCamera>();
             services.AddScoped<ISeedFilter, SeedFilter>();
