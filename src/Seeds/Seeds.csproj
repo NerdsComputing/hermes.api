@@ -17,6 +17,10 @@
       <Content Include="Data\detections.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="Data\cameras.json" />
+      <Content Include="Data\cameras.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
