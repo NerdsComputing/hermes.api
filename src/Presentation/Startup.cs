@@ -40,6 +40,7 @@ namespace Presentation
             services.AddScoped<ISeed, Business.Seeds.CameraSeed>();
             services.AddScoped<IDataFactory, DataFactory>();
             services.AddScoped<ICameraRepository, CameraRepository>();
+            services.AddScoped<ISeedFilter, SeedFilter>();
             services.AddScoped<ICameraFilter, CameraFilter>();
         }
 
