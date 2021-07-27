@@ -11,9 +11,9 @@ namespace Data.Camera
     public class CameraRepository : ICameraRepository
     {
         private readonly Context _context;
-        private readonly CameraFilter _filter;
+        private readonly ICameraFilter _filter;
 
-        public CameraRepository(Context context, CameraFilter filter)
+        public CameraRepository(Context context, ICameraFilter filter)
         {
             _context = context;
             _filter = filter;
