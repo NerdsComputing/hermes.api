@@ -2,6 +2,7 @@ namespace Presentation
 {
     using System.Collections.Generic;
     using Business.Camera.Common.Repositories;
+    using Business.Camera.Register.Commands;
     using Business.Detection.Common.Repositories;
     using Business.Detection.Creating.Commands;
     using Business.Detection.Fetching.Commands;
@@ -40,6 +41,8 @@ namespace Presentation
             services.AddScoped<ISeed, Business.Seeds.CameraSeed>();
             services.AddScoped<IDataFactory, DataFactory>();
             services.AddScoped<ICameraRepository, CameraRepository>();
+            services.AddScoped<Camera.Register.IResolver, Camera.Register.Resolver>();
+            services.AddScoped<IRegisterCamera, RegisterCamera>();
             services.AddScoped<ISeedFilter, SeedFilter>();
             services.AddScoped<ICameraFilter, CameraFilter>();
         }

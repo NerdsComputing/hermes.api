@@ -11,6 +11,6 @@ namespace Business.Camera.Register.Commands
 
         public RegisterCamera(ICameraRepository repository) => _repository = repository;
 
-        public IEnumerable<MCamera> Execute(MRegisterCamera input) => _repository.Insert(new List<MRegisterCamera> { input });
+        public IEnumerable<MCamera> Execute(IEnumerable<MRegisterCamera> input) => _repository.Insert(input);
     }
 }

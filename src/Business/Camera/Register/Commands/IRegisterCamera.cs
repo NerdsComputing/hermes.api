@@ -4,7 +4,7 @@ namespace Business.Camera.Register.Commands
     using Business.Camera.Common.Models;
     using Business.Camera.Register.Models;
 
-    public interface IRegisterCamera : ICommand<MRegisterCamera, IEnumerable<MCamera>>
+    public interface IRegisterCamera : ICommand<IEnumerable<MRegisterCamera>, IEnumerable<MCamera>>
     {
     }
 }

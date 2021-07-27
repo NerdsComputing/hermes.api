@@ -2,27 +2,16 @@ namespace Presentation.GraphQL.Base
 {
     using System;
     using global::GraphQL.Types;
-    using Microsoft.Extensions.DependencyInjection;
-    using Presentation.Detection.Common.Types;
-    using Presentation.Detection.Creating.Types;
 
-    public class Mutation : ObjectGraphType
+    public sealed class Mutation : ObjectGraphType
     {
         public Mutation(IServiceProvider provider)
         {
             Name = "mutation";
+            Description = "All the mutations that can be done.";
 
-            Field(typeof(NonNullGraphType<ListGraphType<NonNullGraphType<TDetection>>>),
-                "createDetection",
-                "Creates a detection",
-                arguments: CreateDetectionArguments(),
-                resolve: input => provider.GetService<Detection.Creating.IResolver>().Execute(input));
+            AddField(Detection.Creating.Factory.Make(provider));
+            AddField(Camera.Register.Factory.Make(provider));
         }
-
-        private static QueryArguments CreateDetectionArguments() => new (new QueryArgument(
-            typeof(NonNullGraphType<ListGraphType<NonNullGraphType<TCreateDetection>>>))
-        {
-            Name = "input",
-        });
     }
 }
