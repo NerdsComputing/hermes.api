@@ -4,6 +4,7 @@ namespace Presentation
     using Business.Camera.Common.Repositories;
     using Business.Camera.Fetching.Commands;
     using Business.Camera.Register.Commands;
+    using Business.Camera.Register.Commands;
     using Business.Detection.Common.Repositories;
     using Business.Detection.Creating.Commands;
     using Business.Detection.Fetching.Commands;
@@ -12,6 +13,7 @@ namespace Presentation
     using Data.Camera;
     using Data.Camera.Filtering;
     using Data.Detection;
+    using Data.Detection.Filtering;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
@@ -38,10 +40,11 @@ namespace Presentation
             services.AddScoped<IGetDetection, GetDetection>();
             services.AddScoped<ICreateDetection, CreateDetection>();
             services.AddScoped<IDetectionRepository, DetectionRepository>();
-            services.AddScoped<ISeed, Business.Seeds.DetectionSeed>();
-            services.AddScoped<ISeed, Business.Seeds.CameraSeed>();
+            services.AddScoped<ISeed, DetectionSeed>();
             services.AddScoped<IDataFactory, DataFactory>();
             services.AddScoped<ICameraRepository, CameraRepository>();
+            services.AddScoped<ICameraFilter, CameraFilter>();
+            services.AddScoped<IDetectionFilter, DetectionFilter>();
             services.AddScoped<Camera.Register.IResolver, Camera.Register.Resolver>();
             services.AddScoped<IRegisterCamera, RegisterCamera>();
             services.AddScoped<ISeedFilter, SeedFilter>();

@@ -11,18 +11,19 @@ namespace Data.Camera
     public class CameraRepository : ICameraRepository
     {
         private readonly Context _context;
+        private readonly ICameraFilter _cameraFilter;
         private readonly ISeedFilter _seedFilter;
-        private readonly ICameraFilter _filter;
 
-        public CameraRepository(Context context, ICameraFilter filter, ISeedFilter seedFilter)
+        public CameraRepository(Context context, ICameraFilter cameraFilter, ISeedFilter seedFilter)
         {
             _context = context;
-            _filter = filter;
+            _cameraFilter = cameraFilter;
+            _seedFilter = seedFilter;
             _seedFilter = seedFilter;
         }
 
         public IEnumerable<MCamera> Insert(IEnumerable<MRegisterCamera> input) => input
-            .Select(camera => CameraFactory.MakeEntity(camera))
+            .Select(CameraFactory.MakeEntity)
             .Select(InsertCamera)
             .Select(CameraFactory.MakeModel)
             .ToList();
@@ -30,7 +31,7 @@ namespace Data.Camera
         public IEnumerable<MCamera> ByParameter(PCamera parameter)
         {
             var cameras = _context.Set<ECamera>();
-            return _filter.With(parameter).Execute(cameras)
+            return _cameraFilter.With(parameter).Execute(cameras)
                 .ToList()
                 .Select(CameraFactory.MakeModel);
         }

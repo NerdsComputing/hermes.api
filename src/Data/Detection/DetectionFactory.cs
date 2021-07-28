@@ -2,6 +2,7 @@ namespace Data.Detection
 {
     using Business.Detection.Common.Models;
     using Business.Detection.Creating.Models;
+    using Data.Camera;
 
     public static class DetectionFactory
     {
@@ -11,6 +12,7 @@ namespace Data.Detection
             Class = entity.Class,
             Score = entity.Score,
             Timestamp = entity.Timestamp,
+            Camera = CameraFactory.MakeModel(entity.Camera),
         };
 
         public static EDetection MakeEntity(MCreateDetection model) => new EDetection

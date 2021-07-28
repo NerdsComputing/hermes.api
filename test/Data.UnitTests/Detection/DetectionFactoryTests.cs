@@ -1,6 +1,7 @@
 namespace Data.UnitTests.Detection
 {
     using System;
+    using Business.Camera.Common.Models;
     using Business.Detection.Common.Models;
     using Business.Detection.Creating.Models;
     using Data.Detection;
@@ -12,6 +13,7 @@ namespace Data.UnitTests.Detection
         private MDetection _model;
         private EDetection _entity;
         private MCreateDetection _modelCreate;
+        private EDetection _entityWithCamera;
 
         [SetUp]
         public void Setup()
@@ -19,12 +21,13 @@ namespace Data.UnitTests.Detection
             _model = CreateModel();
             _modelCreate = CreateInput();
             _entity = CreateEntity();
+            _entityWithCamera = CreateEntityWithCamera();
         }
 
         [Test]
         public void Factory_ShouldConvert_Entity()
         {
-            var outputDetection = DetectionFactory.MakeModel(_entity);
+            var outputDetection = DetectionFactory.MakeModel(_entityWithCamera);
 
             _model.ShouldBeEquivalentTo(outputDetection);
         }
@@ -45,6 +48,20 @@ namespace Data.UnitTests.Detection
             Timestamp = new DateTime(2021, 07, 20),
         };
 
+        private static EDetection CreateEntityWithCamera() => new ()
+        {
+            Id = 0,
+            Class = "Class",
+            Score = 100,
+            Timestamp = new DateTime(2021, 07, 20),
+            Camera = new ECamera
+            {
+                Id = "1",
+                Latitude = "1",
+                Longitude = "1",
+            },
+        };
+
         private static MCreateDetection CreateInput() => new ()
         {
             Class = "Class",
@@ -58,6 +75,12 @@ namespace Data.UnitTests.Detection
             Class = "Class",
             Score = 100,
             Timestamp = new DateTime(2021, 07, 20),
+            Camera = new MCamera
+            {
+                Id = "1",
+                Latitude = "1",
+                Longitude = "1",
+            },
         };
     }
 }

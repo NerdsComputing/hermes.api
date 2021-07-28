@@ -19,5 +19,8 @@ namespace Data
 
         [Required]
         public string CameraId { get; set; }
+
+        [Required]
+        public virtual ECamera Camera { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace Business.Detection.Common.Models
 
         public DateTime Timestamp { get; set; }
 
+        public string CameraId { get; set; }
+
         public MCamera Camera { get; set; }
     }
 }

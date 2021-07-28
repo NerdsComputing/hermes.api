@@ -5,9 +5,9 @@ namespace Business.Detection.Fetching.Models
 
     public class PDetection
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
-        public int Score { get; set; }
+        public int? Score { get; set; }
 
         public string Class { get; set; }
 
