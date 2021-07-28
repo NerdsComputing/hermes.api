@@ -7,12 +7,14 @@ namespace Presentation
     using Business.Detection.Common.Repositories;
     using Business.Detection.Creating.Commands;
     using Business.Detection.Fetching.Commands;
+    using Business.Pagination;
     using Business.Seeds;
     using Data;
     using Data.Camera;
     using Data.Camera.Filtering;
     using Data.Detection;
     using Data.Detection.Filtering;
+    using Data.Pagination.Common;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
@@ -75,6 +77,7 @@ namespace Presentation
             services.AddScoped<ICreateDetection, CreateDetection>();
             services.AddScoped<IRegisterCamera, RegisterCamera>();
             services.AddScoped<IGetCameras, GetCameras>();
+            services.AddScoped(typeof(ICreatePagination<>), typeof(CreatePagination<>));
         }
 
         private static void RegisterGraph(IServiceCollection services)
