@@ -14,7 +14,8 @@ namespace Presentation.Camera.Fetching
 
         public IEnumerable<MCamera> Execute(IResolveFieldContext<object> input)
         {
-           return _getCameras.Execute(new PCamera());
+            var parameter = input.GetArgument<PCamera>("parameter");
+            return _getCameras.Execute(parameter);
         }
     }
 }
