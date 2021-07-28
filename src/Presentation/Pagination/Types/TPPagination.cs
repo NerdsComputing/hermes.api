@@ -10,8 +10,8 @@ namespace Presentation.Pagination.Types
     {
         public TPPagination()
         {
-            Name = "Pagination";
-            Description = "It will be used for fetching data for a single page";
+            Name = "PaginationParameter";
+            Description = "The parameter used to specify the pagination info";
 
             Field(pagination => pagination.PageSize).Description("This is the page size (starts at 1)");
             Field(pagination => pagination.PageIndex).Description("This is the page index (starts at 0");
