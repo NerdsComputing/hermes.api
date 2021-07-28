@@ -31,7 +31,8 @@ namespace Data.Detection.Filtering
             _parameter.Score != null ? input.Where(detection => detection.Score == _parameter.Score) : input;
 
         private IQueryable<EDetection> MatchClass(IQueryable<EDetection> input) =>
-            string.IsNullOrEmpty(_parameter.Class) ? input
+            string.IsNullOrEmpty(_parameter.Class)
+                ? input
                 : input.Where(detection => EF.Functions.Like(detection.Class, $"%{_parameter.Class}%"));
 
         private IQueryable<EDetection> MatchTimestamp(IQueryable<EDetection> input) =>
