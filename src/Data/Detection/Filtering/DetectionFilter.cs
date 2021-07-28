@@ -31,8 +31,8 @@ namespace Data.Detection.Filtering
             _parameter.Score != null ? input.Where(detection => detection.Score == _parameter.Score) : input;
 
         private IQueryable<EDetection> MatchClass(IQueryable<EDetection> input) =>
-            !string.IsNullOrEmpty(_parameter.Class)
-                ? input.Where(detection => EF.Functions.Like(detection.Class, $"%{_parameter.Class}%")) : input;
+            string.IsNullOrEmpty(_parameter.Class) ? input
+                : input.Where(detection => EF.Functions.Like(detection.Class, $"%{_parameter.Class}%"));
 
         private IQueryable<EDetection> MatchTimestamp(IQueryable<EDetection> input) =>
             _parameter.Timestamp != DateTime.MinValue
@@ -40,7 +40,8 @@ namespace Data.Detection.Filtering
                 : input;
 
         private IQueryable<EDetection> MatchCameraId(IQueryable<EDetection> input) =>
-            !string.IsNullOrEmpty(_parameter.CameraId)
-                ? input.Where(detection => EF.Functions.Like(detection.CameraId, $"%{_parameter.CameraId}%")) : input;
+            string.IsNullOrEmpty(_parameter.CameraId)
+                ? input
+                : input.Where(detection => EF.Functions.Like(detection.CameraId, $"%{_parameter.CameraId}%"));
     }
 }
