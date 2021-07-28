@@ -4,7 +4,6 @@ namespace Presentation
     using Business.Camera.Common.Repositories;
     using Business.Camera.Fetching.Commands;
     using Business.Camera.Register.Commands;
-    using Business.Camera.Register.Commands;
     using Business.Detection.Common.Repositories;
     using Business.Detection.Creating.Commands;
     using Business.Detection.Fetching.Commands;
