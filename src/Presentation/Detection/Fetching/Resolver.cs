@@ -13,11 +13,7 @@ namespace Presentation.Detection.Fetching
 
         public Resolver(IGetDetection getDetection) => _getDetection = getDetection;
 
-        public IEnumerable<MDetection> Execute(IResolveFieldContext<object> input)
-        {
-            var detections = _getDetection.Execute(new PDetection());
-
-            return detections;
-        }
+        public IEnumerable<MDetection> Execute(IResolveFieldContext<object> input) =>
+            _getDetection.Execute(new PDetection());
     }
 }
