@@ -4,7 +4,6 @@ namespace Presentation
     using Business.Camera.Common.Repositories;
     using Business.Camera.Fetching.Commands;
     using Business.Camera.Register.Commands;
-    using Business.Camera.Register.Commands;
     using Business.Detection.Common.Repositories;
     using Business.Detection.Creating.Commands;
     using Business.Detection.Fetching.Commands;
@@ -30,15 +29,29 @@ namespace Presentation
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            RegisterContext(services);
+            RegisterGraph(services);
+            RegisterCommands(services);
+            RegisterSeeds(services);
+            RegisterRepositories(services);
+            RegisterFilters(services);
+        }
+
+        private void RegisterContext(IServiceCollection services)
+        {
             var connectionString = _config.GetSection("Database").GetValue<string>("ConnectionString");
             services.AddDbContext<Context>(options => options.UseMySQL(connectionString));
-            services.AddControllers();
+        }
 
-            services.AddScoped<Schema>();
-            services.AddScoped<Detection.Creating.IResolver, Detection.Creating.Resolver>();
-            services.AddScoped<Detection.Fetching.IResolver, Detection.Fetching.Resolver>();
-            services.AddScoped<IGetDetection, GetDetection>();
-            services.AddScoped<ICreateDetection, CreateDetection>();
+        private static void RegisterFilters(IServiceCollection services)
+        {
+            services.AddScoped<ISeedFilter, SeedFilter>();
+            services.AddScoped<ICameraFilter, CameraFilter>();
+        }
+
+        private static void RegisterRepositories(IServiceCollection services)
+        {
             services.AddScoped<IDetectionRepository, DetectionRepository>();
             services.AddScoped<ISeed, DetectionSeed>();
             services.AddScoped<IDataFactory, DataFactory>();
@@ -46,10 +59,31 @@ namespace Presentation
             services.AddScoped<ICameraFilter, CameraFilter>();
             services.AddScoped<IDetectionFilter, DetectionFilter>();
             services.AddScoped<Camera.Register.IResolver, Camera.Register.Resolver>();
+            services.AddScoped<ICameraRepository, CameraRepository>();
+        }
+
+        private static void RegisterSeeds(IServiceCollection services)
+        {
+            services.AddScoped<IDataFactory, DataFactory>();
+            services.AddScoped<ISeed, Business.Seeds.DetectionSeed>();
+            services.AddScoped<ISeed, Business.Seeds.CameraSeed>();
+        }
+
+        private static void RegisterCommands(IServiceCollection services)
+        {
+            services.AddScoped<IGetDetection, GetDetection>();
+            services.AddScoped<ICreateDetection, CreateDetection>();
             services.AddScoped<IRegisterCamera, RegisterCamera>();
-            services.AddScoped<ISeedFilter, SeedFilter>();
-            services.AddScoped<ICameraFilter, CameraFilter>();
             services.AddScoped<IGetCameras, GetCameras>();
+        }
+
+        private static void RegisterGraph(IServiceCollection services)
+        {
+            services.AddScoped<Schema>();
+            services.AddScoped<Detection.Creating.IResolver, Detection.Creating.Resolver>();
+            services.AddScoped<Detection.Fetching.IResolver, Detection.Fetching.Resolver>();
+            services.AddScoped<Camera.Register.IResolver, Camera.Register.Resolver>();
+            services.AddScoped<Camera.Fetching.IResolver, Camera.Fetching.Resolver>();
         }
 
         public void Configure(IApplicationBuilder app, Context context, IEnumerable<ISeed> seeds)
