@@ -1,5 +1,6 @@
 namespace Data.Detection
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Business.Detection.Common.Models;
@@ -44,7 +45,7 @@ namespace Data.Detection
         }
 
         public IEnumerable<MDetection> ByInput(MCreateDetection detection) => _context.Set<EDetection>()
-            .Where(entity => detection.Class == entity.Class && detection.Score == entity.Score)
+            .Where(entity => detection.Class == entity.Class && Math.Abs(detection.Score - entity.Score) < 0.00001)
             .ToList()
             .Select(DetectionFactory.MakeModel);
     }

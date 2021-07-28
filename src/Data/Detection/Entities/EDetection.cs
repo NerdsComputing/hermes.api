@@ -9,7 +9,7 @@ namespace Data
         public int Id { get; set; }
 
         [Required]
-        public int Score { get; set; }
+        public float Score { get; set; }
 
         [Required]
         public string Class { get; set; }

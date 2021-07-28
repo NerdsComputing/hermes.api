@@ -299,14 +299,14 @@
   "cameraId": "default"
 },
 {
-  "class": "pet",
-  "score": 6,
+  "class": "petsss",
+  "score": 0.8,
   "timestamp": "5/1/2021 8:30:52AM",
   "cameraId": "default"
 },
 {
-  "class": "pet",
-  "score": 20,
+  "class": "pets",
+  "score": 0.5,
   "timestamp": "5/1/2021 8:30:52AM",
   "cameraId": "default"
 }]
