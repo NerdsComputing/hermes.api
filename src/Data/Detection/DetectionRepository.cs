@@ -45,7 +45,7 @@ namespace Data.Detection
         }
 
         public IEnumerable<MDetection> ByInput(MCreateDetection detection) => _context.Set<EDetection>()
-            .Where(entity => detection.Class == entity.Class && Math.Abs(detection.Score - entity.Score) < Math.Abs(entity.Score * 0.00001))
+            .Where(entity => detection.Class == entity.Class && Math.Abs(detection.Score - entity.Score) < 0.00001)
             .ToList()
             .Select(DetectionFactory.MakeModel);
     }
