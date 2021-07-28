@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <Folder Include="Camera\Common" />
+      <Folder Include="Pagination\Common" />
     </ItemGroup>
 
 </Project>
