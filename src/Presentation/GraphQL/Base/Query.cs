@@ -4,6 +4,7 @@ namespace Presentation.GraphQL.Base
     using System.Diagnostics.CodeAnalysis;
     using global::GraphQL.Types;
     using Microsoft.Extensions.DependencyInjection;
+    using Presentation.Camera.Common.Types;
     using Presentation.Detection.Common.Types;
     using Style;
 
@@ -14,10 +15,17 @@ namespace Presentation.GraphQL.Base
         public Query(IServiceProvider provider)
         {
             Name = "query";
+            Description = "All the queries that can be done.";
+
             Field(typeof(NonNullGraphType<ListGraphType<NonNullGraphType<TDetection>>>),
                 "detections",
                 "Fetch all the existing detections",
                 resolve: input => provider.GetService<Detection.Fetching.IResolver>().Execute(input));
+
+            Field(typeof(NonNullGraphType<ListGraphType<NonNullGraphType<TCamera>>>),
+                "cameras",
+                "Fetch all the existing cameras",
+                resolve: input => provider.GetService<Camera.Fetching.IResolver>().Execute(input));
         }
     }
 }
