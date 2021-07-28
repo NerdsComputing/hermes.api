@@ -1,7 +1,7 @@
 namespace Business.Detection.Fetching.Models
 {
     using System;
-    using Business.Pagination;
+    using Business.Pagination.Models;
 
     public class PDetection
     {
