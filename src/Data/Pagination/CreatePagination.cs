@@ -1,8 +1,9 @@
-namespace Data.Pagination.Common
+namespace Data.Pagination
 {
     using System.Collections.Generic;
     using System.Linq;
     using Business.Pagination;
+    using Business.Pagination.Models;
 
     public class CreatePagination<TItem> : ICreatePagination<TItem>
     {
