@@ -1,6 +1,5 @@
 namespace Presentation.Detection.Fetching
 {
-    using System;
     using System.Collections.Generic;
     using Business.Detection.Common.Models;
     using Business.Detection.Fetching.Commands;
@@ -13,7 +12,10 @@ namespace Presentation.Detection.Fetching
 
         public Resolver(IGetDetection getDetection) => _getDetection = getDetection;
 
-        public IEnumerable<MDetection> Execute(IResolveFieldContext<object> input) =>
-            _getDetection.Execute(new PDetection());
+        public IEnumerable<MDetection> Execute(IResolveFieldContext<object> input)
+        {
+            var parameter = input.GetArgument<PDetection>("parameter");
+            return _getDetection.Execute(parameter);
+        }
     }
 }
