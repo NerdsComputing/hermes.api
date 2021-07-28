@@ -1,4 +1,4 @@
-namespace Business.Pagination
+namespace Business.Pagination.Models
 {
     using System.Collections.Generic;
 

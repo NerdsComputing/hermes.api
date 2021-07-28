@@ -1,4 +1,4 @@
-namespace Business.Pagination
+namespace Business.Pagination.Models
 {
     public class PPagination
     {

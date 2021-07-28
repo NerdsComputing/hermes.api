@@ -1,7 +1,7 @@
 namespace Business.Camera.Fetching.Models
 {
     using System.Collections.Generic;
-    using Business.Pagination;
+    using Business.Pagination.Models;
 
     public class PCamera
     {

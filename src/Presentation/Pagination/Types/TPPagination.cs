@@ -1,7 +1,7 @@
 namespace Presentation.Pagination.Types
 {
     using System.Diagnostics.CodeAnalysis;
-    using Business.Pagination;
+    using Business.Pagination.Models;
     using global::GraphQL.Types;
     using Style;
 
