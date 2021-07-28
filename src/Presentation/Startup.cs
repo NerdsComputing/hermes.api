@@ -14,7 +14,7 @@ namespace Presentation
     using Data.Camera.Filtering;
     using Data.Detection;
     using Data.Detection.Filtering;
-    using Data.Pagination.Common;
+    using Data.Pagination;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
@@ -67,8 +67,8 @@ namespace Presentation
         private static void RegisterSeeds(IServiceCollection services)
         {
             services.AddScoped<IDataFactory, DataFactory>();
-            services.AddScoped<ISeed, Business.Seeds.DetectionSeed>();
             services.AddScoped<ISeed, Business.Seeds.CameraSeed>();
+            services.AddScoped<ISeed, Business.Seeds.DetectionSeed>();
         }
 
         private static void RegisterCommands(IServiceCollection services)
