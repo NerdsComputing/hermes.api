@@ -26,7 +26,7 @@ namespace Data.Camera
             Items = pagination.Items.Select(MakeModel),
             PageIndex = pagination.PageIndex,
             PageSize = pagination.PageSize,
-            TotalCounts = pagination.TotalCounts,
+            TotalCount = pagination.TotalCount,
         };
     }
 }
