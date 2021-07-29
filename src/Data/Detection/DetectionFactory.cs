@@ -1,7 +1,10 @@
 namespace Data.Detection
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Business.Detection.Common.Models;
     using Business.Detection.Creating.Models;
+    using Business.Pagination.Models;
     using Data.Camera;
 
     public static class DetectionFactory
@@ -21,6 +24,14 @@ namespace Data.Detection
             Score = model.Score,
             Timestamp = model.Timestamp,
             CameraId = model.CameraId,
+        };
+
+        public static MPagination<MDetection> MakePaginationModel(MPagination<EDetection> pagination) => new ()
+        {
+            Items = pagination.Items.Select(MakeModel),
+            PageIndex = pagination.PageIndex,
+            PageSize = pagination.PageSize,
+            TotalCount = pagination.TotalCount,
         };
     }
 }
