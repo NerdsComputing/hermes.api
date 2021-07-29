@@ -4,6 +4,7 @@ namespace Business.Detection.Fetching.Commands
     using Business.Detection.Common.Models;
     using Business.Detection.Common.Repositories;
     using Business.Detection.Fetching.Models;
+    using Business.Pagination.Models;
 
     public class GetDetection : IGetDetection
     {
@@ -11,6 +12,6 @@ namespace Business.Detection.Fetching.Commands
 
         public GetDetection(IDetectionRepository repository) => _repository = repository;
 
-        public IEnumerable<MDetection> Execute(PDetection input) => _repository.ByParameter(input);
+        public MPagination<MDetection> Execute(PDetection input) => _repository.ByParameter(input);
     }
 }

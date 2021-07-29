@@ -4,10 +4,11 @@ namespace Business.Detection.Common.Repositories
     using Business.Detection.Common.Models;
     using Business.Detection.Creating.Models;
     using Business.Detection.Fetching.Models;
+    using Business.Pagination.Models;
 
     public interface IDetectionRepository
     {
-        public IEnumerable<MDetection> ByParameter(PDetection parameter);
+        public MPagination<MDetection> ByParameter(PDetection parameter);
 
         public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> input);
 
