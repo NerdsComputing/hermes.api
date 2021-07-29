@@ -10,7 +10,7 @@ namespace Presentation.Camera.Fetching.Types
     {
         public TPCamera()
         {
-            Field(camera => camera.Ids).Description("This is the list of ids");
+            Field(camera => camera.Ids, true).Description("This is the list of ids");
         }
     }
 }
