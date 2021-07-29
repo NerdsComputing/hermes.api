@@ -4,6 +4,7 @@ namespace Business.Camera.Common.Repositories
     using Business.Camera.Common.Models;
     using Business.Camera.Fetching.Models;
     using Business.Camera.Register.Models;
+    using Business.Pagination.Models;
 
     public interface ICameraRepository
     {
@@ -11,6 +12,6 @@ namespace Business.Camera.Common.Repositories
 
         public IEnumerable<MCamera> ByInput(MRegisterCamera camera);
 
-        public IEnumerable<MCamera> ByParameter(PCamera parameter);
+        public MPagination<MCamera> ByParameter(PCamera parameter);
     }
 }
