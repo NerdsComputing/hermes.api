@@ -22,12 +22,12 @@ namespace Data.Pagination
             Items = GetItems(input),
             PageIndex = _pagination.PageIndex,
             PageSize = _pagination.PageSize,
-            TotalCounts = input.Count(),
+            TotalCount = input.Count(),
         };
 
         private IEnumerable<TItem> GetItems(IQueryable<TItem> input) => input
-            .Skip(_pagination.PageIndex * _pagination.PageSize)
-            .Take(_pagination.PageSize)
-            .ToList();
-    }
+                .Skip(_pagination.PageIndex * _pagination.PageSize)
+                .Take(_pagination.PageSize)
+                .ToList();
+        }
 }
