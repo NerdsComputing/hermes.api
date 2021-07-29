@@ -11,7 +11,7 @@ namespace Business.Detection.Fetching.Models
 
         public string Class { get; set; }
 
-        public DateTime Timestamp { get; set; }
+        public MTimestampFilter TimestampFilter { get; set; } = new MTimestampFilter();
 
         public PPagination Pagination { get; set; } = new PPagination();
 
