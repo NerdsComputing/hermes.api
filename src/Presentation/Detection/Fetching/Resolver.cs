@@ -4,6 +4,7 @@ namespace Presentation.Detection.Fetching
     using Business.Detection.Common.Models;
     using Business.Detection.Fetching.Commands;
     using Business.Detection.Fetching.Models;
+    using Business.Pagination.Models;
     using global::GraphQL;
 
     public class Resolver : IResolver
@@ -12,7 +13,7 @@ namespace Presentation.Detection.Fetching
 
         public Resolver(IGetDetection getDetection) => _getDetection = getDetection;
 
-        public IEnumerable<MDetection> Execute(IResolveFieldContext<object> input)
+        public MPagination<MDetection> Execute(IResolveFieldContext<object> input)
         {
             var parameter = input.GetArgument<PDetection>("parameter");
             return _getDetection.Execute(parameter);

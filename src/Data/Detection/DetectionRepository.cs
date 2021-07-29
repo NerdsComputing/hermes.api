@@ -7,6 +7,8 @@ namespace Data.Detection
     using Business.Detection.Common.Repositories;
     using Business.Detection.Creating.Models;
     using Business.Detection.Fetching.Models;
+    using Business.Pagination;
+    using Business.Pagination.Models;
     using Data.Detection.Filtering;
     using Microsoft.EntityFrameworkCore;
 
@@ -14,21 +16,23 @@ namespace Data.Detection
     {
         private readonly Context _context;
         private readonly IDetectionFilter _filter;
+        private readonly ICreatePagination<EDetection> _pagination;
 
-        public DetectionRepository(Context context, IDetectionFilter filter)
+        public DetectionRepository(Context context, IDetectionFilter filter, ICreatePagination<EDetection> pagination)
         {
             _context = context;
             _filter = filter;
+            _pagination = pagination;
         }
 
-        public IEnumerable<MDetection> ByParameter(PDetection parameter)
+        public MPagination<MDetection> ByParameter(PDetection parameter)
         {
             var detections = _context.Set<EDetection>()
                 .Include(entity => entity.Camera);
 
-            return _filter.With(parameter).Execute(detections)
-                .ToList()
-                .Select(DetectionFactory.MakeModel);
+            var filterDetections = _filter.With(parameter).Execute(detections);
+            var pagination = _pagination.With(parameter.Pagination).Execute(filterDetections);
+            return DetectionFactory.MakePaginationModel(pagination);
         }
 
         public IEnumerable<MDetection> Insert(IEnumerable<MCreateDetection> input) => input

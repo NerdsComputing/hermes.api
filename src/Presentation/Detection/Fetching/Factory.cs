@@ -7,6 +7,7 @@ namespace Presentation.Detection.Fetching
     using Microsoft.Extensions.DependencyInjection;
     using Presentation.Detection.Common.Types;
     using Presentation.Detection.Fetching.Types;
+    using Presentation.Pagination.Types;
 
     public static class Factory
     {
@@ -16,7 +17,7 @@ namespace Presentation.Detection.Fetching
             {
                 Name = "detections",
                 Description = "Fetch all the existing detections",
-                Type = typeof(NonNullGraphType<ListGraphType<NonNullGraphType<TDetection>>>),
+                Type = typeof(TPagination<TDetection>),
                 Arguments = MakeArguments(),
                 Resolver = new FuncFieldResolver<TPDetection, object>(MakeResolver(provider)),
             };
@@ -27,7 +28,7 @@ namespace Presentation.Detection.Fetching
             return input => provider.GetService<IResolver>().Execute(input);
         }
 
-        private static QueryArguments MakeArguments() => new (new QueryArgument<TPDetection>
+        private static QueryArguments MakeArguments() => new (new QueryArgument<NonNullGraphType<TPDetection>>
         {
             Name = "parameter",
             Description = "The parameter used to filter the results",
