@@ -3,6 +3,7 @@ namespace Presentation.Camera.Fetching.Types
     using System.Diagnostics.CodeAnalysis;
     using Business.Camera.Fetching.Models;
     using global::GraphQL.Types;
+    using Presentation.Pagination.Types;
     using Style;
 
     [SuppressMessage(Category.Default, Check.CA1724, Justification = Reason.Readability)]
@@ -11,6 +12,7 @@ namespace Presentation.Camera.Fetching.Types
         public TPCamera()
         {
             Field(camera => camera.Ids, true).Description("This is the list of ids");
+            Field(camera => camera.Pagination, false, typeof(TPPagination)).Description("This is the pagination.");
         }
     }
 }
