@@ -10,6 +10,6 @@ namespace Business.Pagination.Models
 
         public int PageIndex { get; set; }
 
-        public int TotalCounts { get; set; }
+        public int TotalCount { get; set; }
     }
 }
