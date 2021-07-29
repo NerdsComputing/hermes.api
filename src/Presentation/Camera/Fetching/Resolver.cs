@@ -4,6 +4,7 @@ namespace Presentation.Camera.Fetching
     using Business.Camera.Common.Models;
     using Business.Camera.Fetching.Commands;
     using Business.Camera.Fetching.Models;
+    using Business.Pagination.Models;
     using global::GraphQL;
 
     public class Resolver : IResolver
@@ -12,7 +13,7 @@ namespace Presentation.Camera.Fetching
 
         public Resolver(IGetCameras getCameras) => _getCameras = getCameras;
 
-        public IEnumerable<MCamera> Execute(IResolveFieldContext<object> input)
+        public MPagination<MCamera> Execute(IResolveFieldContext<object> input)
         {
             var parameter = input.GetArgument<PCamera>("parameter");
             return _getCameras.Execute(parameter);

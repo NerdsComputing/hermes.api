@@ -1,7 +1,9 @@
 namespace Data.Camera
 {
+    using System.Linq;
     using Business.Camera.Common.Models;
     using Business.Camera.Register.Models;
+    using Business.Pagination.Models;
 
     public static class CameraFactory
     {
@@ -17,6 +19,14 @@ namespace Data.Camera
             Id = model.Id,
             Latitude = model.Latitude,
             Longitude = model.Longitude,
+        };
+
+        public static MPagination<MCamera> MakePaginationModel(MPagination<ECamera> pagination) => new ()
+        {
+            Items = pagination.Items.Select(MakeModel),
+            PageIndex = pagination.PageIndex,
+            PageSize = pagination.PageSize,
+            TotalCount = pagination.TotalCount,
         };
     }
 }

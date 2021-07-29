@@ -6,6 +6,8 @@ namespace Data.Camera
     using Business.Camera.Common.Repositories;
     using Business.Camera.Fetching.Models;
     using Business.Camera.Register.Models;
+    using Business.Pagination;
+    using Business.Pagination.Models;
     using Data.Camera.Filtering;
 
     public class CameraRepository : ICameraRepository
@@ -13,12 +15,14 @@ namespace Data.Camera
         private readonly Context _context;
         private readonly ICameraFilter _cameraFilter;
         private readonly ISeedFilter _seedFilter;
+        private readonly ICreatePagination<ECamera> _pagination;
 
-        public CameraRepository(Context context, ICameraFilter cameraFilter, ISeedFilter seedFilter)
+        public CameraRepository(Context context, ICameraFilter cameraFilter, ISeedFilter seedFilter, ICreatePagination<ECamera> pagination)
         {
             _context = context;
             _cameraFilter = cameraFilter;
             _seedFilter = seedFilter;
+            _pagination = pagination;
             _seedFilter = seedFilter;
         }
 
@@ -28,12 +32,12 @@ namespace Data.Camera
             .Select(CameraFactory.MakeModel)
             .ToList();
 
-        public IEnumerable<MCamera> ByParameter(PCamera parameter)
+        public MPagination<MCamera> ByParameter(PCamera parameter)
         {
             var cameras = _context.Set<ECamera>();
-            return _cameraFilter.With(parameter).Execute(cameras)
-                .ToList()
-                .Select(CameraFactory.MakeModel);
+            var cameraFilters = _cameraFilter.With(parameter).Execute(cameras);
+            var cameraPagination = _pagination.With(parameter.Pagination).Execute(cameraFilters);
+            return CameraFactory.MakePaginationModel(cameraPagination);
         }
 
         public IEnumerable<MCamera> ByInput(MRegisterCamera camera)

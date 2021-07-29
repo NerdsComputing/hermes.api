@@ -4,6 +4,7 @@ namespace Business.Camera.Fetching.Commands
     using Business.Camera.Common.Models;
     using Business.Camera.Common.Repositories;
     using Business.Camera.Fetching.Models;
+    using Business.Pagination.Models;
 
     public class GetCameras : IGetCameras
     {
@@ -11,6 +12,6 @@ namespace Business.Camera.Fetching.Commands
 
         public GetCameras(ICameraRepository repository) => _repository = repository;
 
-        public IEnumerable<MCamera> Execute(PCamera input) => _repository.ByParameter(input);
+        public MPagination<MCamera> Execute(PCamera input) => _repository.ByParameter(input);
     }
 }
