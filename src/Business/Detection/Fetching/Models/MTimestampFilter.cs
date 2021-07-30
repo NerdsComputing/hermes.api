@@ -4,8 +4,8 @@ namespace Business.Detection.Fetching.Models
 
     public class MTimestampFilter
     {
-        public DateTime LesserThan { get; set; }
+        public DateTime? LesserEqualThan { get; set; }
 
-        public DateTime GreaterThan { get; set; }
+        public DateTime? GreaterEqualThan { get; set; }
     }
 }

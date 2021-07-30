@@ -13,8 +13,8 @@ namespace Presentation.Detection.Fetching.Types
             Name = "TimestampFilter";
             Description = "This will be used for filtering the detections by timestamp";
 
-            Field(timestamp => timestamp.LesserThan, true).Description("Detections will have the timestamp lesser than this value");
-            Field(timestamp => timestamp.GreaterThan, true).Description("Detections will have the timestamp greater than this value");
+            Field(timestamp => timestamp.LesserEqualThan, true).Description("Detections will have the timestamp lesser than this value");
+            Field(timestamp => timestamp.GreaterEqualThan, true).Description("Detections will have the timestamp greater than this value");
         }
     }
 }
