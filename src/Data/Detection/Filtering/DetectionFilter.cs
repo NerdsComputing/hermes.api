@@ -18,7 +18,8 @@ namespace Data.Detection.Filtering
         public IQueryable<EDetection> Execute(IQueryable<EDetection> input)
         {
             input = MatchId(input);
-            input = MatchScore(input);
+            input = MatchScoreLesserThan(input);
+            input = MatchScoreGreaterThan(input);
             input = MatchClass(input);
             input = MatchTimestampLesserThan(input);
             input = MatchTimestampGreaterThan(input);
@@ -28,8 +29,15 @@ namespace Data.Detection.Filtering
         private IQueryable<EDetection> MatchId(IQueryable<EDetection> input) =>
             _parameter.Id != null ? input.Where(detection => detection.Id == _parameter.Id) : input;
 
-        private IQueryable<EDetection> MatchScore(IQueryable<EDetection> input) =>
-            _parameter.Score != null ? input.Where(detection => detection.Score == _parameter.Score) : input;
+        private IQueryable<EDetection> MatchScoreLesserThan(IQueryable<EDetection> input) =>
+            _parameter.Score.LesserEqualThan != null
+                ? input.Where(detection => detection.Score <= _parameter.Score.LesserEqualThan)
+                : input;
+
+        private IQueryable<EDetection> MatchScoreGreaterThan(IQueryable<EDetection> input) =>
+            _parameter.Score.GreaterEqualThan != null
+                ? input.Where(detection => detection.Score >= _parameter.Score.GreaterEqualThan)
+                : input;
 
         private IQueryable<EDetection> MatchClass(IQueryable<EDetection> input) =>
             string.IsNullOrEmpty(_parameter.Class)
