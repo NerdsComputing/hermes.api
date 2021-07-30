@@ -37,7 +37,7 @@ Hermes is an application for cameras that can be used for detecting recyclable m
 * *M*
   * **M** comes from **Model** and it is used in **Business Layer**.
 * *P*
-  * **P** comes form **Parameter** and it is a **Parameter Model** used in **Business Layer**.
+  * **P** comes from **Parameter** and it is a **Parameter Model** used in **Business Layer**.
 * *E*
   * **E** comes from **Entity** and it is used in **Data Layer**.
 * *T*
