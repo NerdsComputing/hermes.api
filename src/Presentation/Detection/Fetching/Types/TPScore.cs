@@ -3,9 +3,9 @@ namespace Presentation.Detection.Fetching.Types
     using Business.Detection.Fetching.Models;
     using global::GraphQL.Types;
 
-    public class TScoreFilter : InputObjectGraphType<MScoreFilter>
+    public class TPScore : InputObjectGraphType<PScore>
     {
-        public TScoreFilter()
+        public TPScore()
         {
             Name = "ScoreFilter";
             Description = "This will be used for filtering the detections by score";
