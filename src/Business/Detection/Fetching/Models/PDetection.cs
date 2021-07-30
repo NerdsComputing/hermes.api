@@ -7,7 +7,7 @@ namespace Business.Detection.Fetching.Models
     {
         public int? Id { get; set; }
 
-        public MScoreFilter? ScoreFilter { get; set; } = new MScoreFilter();
+        public PScore? Score { get; set; } = new PScore();
 
         public string Class { get; set; }
 

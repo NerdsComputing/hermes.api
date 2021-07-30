@@ -30,13 +30,13 @@ namespace Data.Detection.Filtering
             _parameter.Id != null ? input.Where(detection => detection.Id == _parameter.Id) : input;
 
         private IQueryable<EDetection> MatchScoreLesserThan(IQueryable<EDetection> input) =>
-            _parameter.ScoreFilter.LesserEqualThan != null
-                ? input.Where(detection => detection.Score <= _parameter.ScoreFilter.LesserEqualThan)
+            _parameter.Score.LesserEqualThan != null
+                ? input.Where(detection => detection.Score <= _parameter.Score.LesserEqualThan)
                 : input;
 
         private IQueryable<EDetection> MatchScoreGreaterThan(IQueryable<EDetection> input) =>
-            _parameter.ScoreFilter.GreaterEqualThan != null
-                ? input.Where(detection => detection.Score >= _parameter.ScoreFilter.GreaterEqualThan)
+            _parameter.Score.GreaterEqualThan != null
+                ? input.Where(detection => detection.Score >= _parameter.Score.GreaterEqualThan)
                 : input;
 
         private IQueryable<EDetection> MatchClass(IQueryable<EDetection> input) =>

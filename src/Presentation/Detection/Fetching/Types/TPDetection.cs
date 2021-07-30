@@ -15,7 +15,7 @@ namespace Presentation.Detection.Fetching.Types
             Description = "This will be used for filtering the detections";
 
             Field(detection => detection.Id, true).Description("This is the Id based on which the filtering is done (it can be null)");
-            Field(detection => detection.ScoreFilter, true, typeof(TScoreFilter)).Description("This is the Score based on which the filtering is done (it can be null)");
+            Field(detection => detection.Score, true, typeof(TPScore)).Description("This is the Score based on which the filtering is done (it can be null)");
             Field(detection => detection.Class, true).Description("This is the Class based on which the filtering is done (it can be null)");
             Field(detection => detection.Timestamp, true, typeof(TTimestamp))
                 .Description("This is the timestamp based on which the filtering is done (it can be null)");
