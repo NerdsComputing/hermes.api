@@ -11,7 +11,7 @@ namespace Business.Detection.Fetching.Models
 
         public string Class { get; set; }
 
-        public DateTime Timestamp { get; set; }
+        public PTimestamp Timestamp { get; set; } = new PTimestamp();
 
         public PPagination Pagination { get; set; } = new PPagination();
 
