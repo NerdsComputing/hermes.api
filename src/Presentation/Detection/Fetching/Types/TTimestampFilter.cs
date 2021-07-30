@@ -6,7 +6,7 @@ namespace Presentation.Detection.Fetching.Types
     using Style;
 
     [SuppressMessage(Category.Default, Check.CA1724, Justification = Reason.Readability)]
-    public class TTimestampFilter : InputObjectGraphType<MTimestampFilter>
+    public class TTimestampFilter : InputObjectGraphType<PTimestampFilter>
     {
         public TTimestampFilter()
         {
