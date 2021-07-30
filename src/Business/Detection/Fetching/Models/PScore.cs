@@ -1,6 +1,6 @@
 namespace Business.Detection.Fetching.Models
 {
-    public class MScoreFilter
+    public class PScore
     {
         public float? LesserEqualThan { get; set; }
 
