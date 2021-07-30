@@ -2,7 +2,7 @@ namespace Business.Detection.Fetching.Models
 {
     using System;
 
-    public class PTimestampFilter
+    public class PTimestamp
     {
         public DateTime? LesserEqualThan { get; set; }
 

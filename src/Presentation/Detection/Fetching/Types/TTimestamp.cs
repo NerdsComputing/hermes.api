@@ -6,9 +6,9 @@ namespace Presentation.Detection.Fetching.Types
     using Style;
 
     [SuppressMessage(Category.Default, Check.CA1724, Justification = Reason.Readability)]
-    public class TTimestampFilter : InputObjectGraphType<PTimestampFilter>
+    public class TTimestamp : InputObjectGraphType<PTimestamp>
     {
-        public TTimestampFilter()
+        public TTimestamp()
         {
             Name = "TimestampFilter";
             Description = "This will be used for filtering the detections by timestamp";

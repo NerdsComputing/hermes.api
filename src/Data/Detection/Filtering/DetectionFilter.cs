@@ -37,13 +37,13 @@ namespace Data.Detection.Filtering
                 : input.Where(detection => EF.Functions.Like(detection.Class, $"%{_parameter.Class}%"));
 
         private IQueryable<EDetection> MatchTimestampLesserThan(IQueryable<EDetection> input) =>
-            _parameter.TimestampFilter.LesserEqualThan != null
-                ? input.Where(detection => detection.Timestamp <= _parameter.TimestampFilter.LesserEqualThan)
+            _parameter.Timestamp.LesserEqualThan != null
+                ? input.Where(detection => detection.Timestamp <= _parameter.Timestamp.LesserEqualThan)
                 : input;
 
         private IQueryable<EDetection> MatchTimestampGreaterThan(IQueryable<EDetection> input) =>
-            _parameter.TimestampFilter.GreaterEqualThan != null
-                ? input.Where(detection => detection.Timestamp >= _parameter.TimestampFilter.GreaterEqualThan)
+            _parameter.Timestamp.GreaterEqualThan != null
+                ? input.Where(detection => detection.Timestamp >= _parameter.Timestamp.GreaterEqualThan)
                 : input;
 
         private IQueryable<EDetection> MatchCameraId(IQueryable<EDetection> input) =>
