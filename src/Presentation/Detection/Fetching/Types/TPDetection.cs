@@ -14,13 +14,13 @@ namespace Presentation.Detection.Fetching.Types
             Name = "DetectionParameter";
             Description = "This will be used for filtering the detections";
 
-            Field(detection => detection.Id, true).Description("This is the ID");
-            Field(detection => detection.Score, true).Description("This is the Score");
-            Field(detection => detection.Class, true).Description("This is the Class");
+            Field(detection => detection.Id, true).Description("This is the Id based on which the filtering is done (it can be null)");
+            Field(detection => detection.Score, true).Description("This is the Score based on which the filtering is done (it can be null)");
+            Field(detection => detection.Class, true).Description("This is the Class based on which the filtering is done (it can be null)");
             Field(detection => detection.TimestampFilter, true, typeof(TTimestampFilter))
-                .Description("This is the timestamp");
-            Field(detection => detection.Pagination, false, typeof(TPPagination)).Description("This is the pagination");
-            Field(detection => detection.CameraId, true).Description("The camera id that took the detection");
+                .Description("This is the timestamp based on which the filtering is done (it can be null)");
+            Field(detection => detection.Pagination, false, typeof(TPPagination)).Description("This is the Pagination based on which the pagination info is done");
+            Field(detection => detection.CameraId, true).Description("This is the CameraId based on which the filtering is done (it can be null)");
         }
     }
 }
