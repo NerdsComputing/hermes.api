@@ -1,6 +1,5 @@
 namespace Data.Detection.Filtering
 {
-    using System;
     using System.Linq;
     using Business.Detection.Fetching.Models;
     using Microsoft.EntityFrameworkCore;
@@ -23,7 +22,7 @@ namespace Data.Detection.Filtering
             input = MatchClass(input);
             input = MatchTimestampLesserThan(input);
             input = MatchTimestampGreaterThan(input);
-            return MatchCameraId(input);
+            return MatchCameraIds(input);
         }
 
         private IQueryable<EDetection> MatchId(IQueryable<EDetection> input) =>
@@ -54,7 +53,7 @@ namespace Data.Detection.Filtering
                 ? input.Where(detection => detection.Timestamp >= _parameter.Timestamp.GreaterEqualThan)
                 : input;
 
-        private IQueryable<EDetection> MatchCameraId(IQueryable<EDetection> input) =>
+        private IQueryable<EDetection> MatchCameraIds(IQueryable<EDetection> input) =>
             _parameter.CameraIds == null ? input : input.Where(detection => _parameter.CameraIds.Contains(detection.CameraId));
     }
 }
