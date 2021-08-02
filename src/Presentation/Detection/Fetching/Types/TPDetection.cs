@@ -20,7 +20,7 @@ namespace Presentation.Detection.Fetching.Types
             Field(detection => detection.Timestamp, true, typeof(TTimestamp))
                 .Description("This is the timestamp based on which the filtering is done (it can be null)");
             Field(detection => detection.Pagination, false, typeof(TPPagination)).Description("This is the Pagination based on which the pagination info is done");
-            Field(detection => detection.CameraId, true).Description("This is the CameraId based on which the filtering is done (it can be null)");
+            Field(detection => detection.CameraIds, true).Description("This is the CameraId based on which the filtering is done (it can be null)");
         }
     }
 }
