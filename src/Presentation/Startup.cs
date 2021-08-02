@@ -32,6 +32,7 @@ namespace Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            RegisterCors(services);
             RegisterContext(services);
             RegisterGraph(services);
             RegisterCommands(services);
@@ -39,6 +40,17 @@ namespace Presentation
             RegisterRepositories(services);
             RegisterFilters(services);
         }
+
+        private void RegisterCors(IServiceCollection services) => services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+                builder.AllowCredentials();
+                builder.WithOrigins(_config.GetSection("Cors").GetValue<string[]>("Hosts"));
+            });
+        });
 
         private void RegisterContext(IServiceCollection services)
         {
@@ -91,6 +103,7 @@ namespace Presentation
 
         public void Configure(IApplicationBuilder app, Context context, IEnumerable<ISeed> seeds)
         {
+            app.UseCors();
             ConfigureEnvironment(app);
             ConfigureDatabase(context);
             ConfigureEndpoints(app);
