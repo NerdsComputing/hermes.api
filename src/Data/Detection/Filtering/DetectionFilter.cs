@@ -55,8 +55,6 @@ namespace Data.Detection.Filtering
                 : input;
 
         private IQueryable<EDetection> MatchCameraId(IQueryable<EDetection> input) =>
-            string.IsNullOrEmpty(_parameter.CameraId)
-                ? input
-                : input.Where(detection => EF.Functions.Like(detection.CameraId, $"%{_parameter.CameraId}%"));
+            _parameter.CameraIds == null ? input : input.Where(detection => _parameter.CameraIds.Contains(detection.CameraId));
     }
 }
