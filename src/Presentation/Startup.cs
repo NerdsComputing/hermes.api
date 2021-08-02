@@ -48,7 +48,7 @@ namespace Presentation
                 builder.AllowAnyHeader();
                 builder.AllowAnyMethod();
                 builder.AllowCredentials();
-                builder.WithOrigins(_config.GetSection("Cors").GetValue<string[]>("Hosts"));
+                builder.WithOrigins(_config.GetSection("Cors").GetSection("Hosts").Get<string[]>());
             });
         });
 
