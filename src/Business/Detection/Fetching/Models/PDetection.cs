@@ -1,6 +1,7 @@
 namespace Business.Detection.Fetching.Models
 {
     using System;
+    using System.Collections.Generic;
     using Business.Pagination.Models;
 
     public class PDetection
@@ -15,6 +16,6 @@ namespace Business.Detection.Fetching.Models
 
         public PPagination Pagination { get; set; } = new PPagination();
 
-        public string CameraId { get; set; }
+        public List<string>? CameraIds { get; set; }
     }
 }
