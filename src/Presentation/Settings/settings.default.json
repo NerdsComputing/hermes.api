@@ -2,5 +2,8 @@
   "environment": "Default",
   "Database": {
     "ConnectionString": "Server=localhost;Database=hermes;User=root;Password=admin;"
+  },
+  "Cors": {
+    "Hosts": [ "http://localhost:3000" ]
   }
 }
