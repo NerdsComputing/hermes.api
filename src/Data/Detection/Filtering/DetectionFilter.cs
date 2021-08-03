@@ -22,6 +22,7 @@ namespace Data.Detection.Filtering
             input = MatchClass(input);
             input = MatchTimestampLesserThan(input);
             input = MatchTimestampGreaterThan(input);
+
             return MatchCameraIds(input);
         }
 
