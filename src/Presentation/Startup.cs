@@ -31,7 +31,7 @@ namespace Presentation
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            RegisterControllers(services);
             RegisterCors(services);
             RegisterContext(services);
             RegisterGraph(services);
@@ -39,6 +39,12 @@ namespace Presentation
             RegisterSeeds(services);
             RegisterRepositories(services);
             RegisterFilters(services);
+        }
+
+        private static void RegisterControllers(IServiceCollection services)
+        {
+            services.AddControllers();
+            services.AddMvc().AddNewtonsoftJson();
         }
 
         private void RegisterCors(IServiceCollection services) => services.AddCors(options =>
