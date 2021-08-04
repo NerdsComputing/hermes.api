@@ -39,22 +39,22 @@ namespace Data.UnitTests.Camera
         private static ECamera CreateEntity() => new ()
         {
             Id = "0",
-            Latitude = "45.791795",
-            Longitude = "24.129404",
+            Latitude = 45.791795,
+            Longitude = 24.129404,
         };
 
         private static MRegisterCamera CreateInput() => new ()
         {
             Id = "0",
-            Latitude = "45.791795",
-            Longitude = "24.129404",
+            Latitude = 45.791795,
+            Longitude = 24.129404,
         };
 
         private static MCamera CreateModel() => new ()
         {
             Id = "0",
-            Latitude = "45.791795",
-            Longitude = "24.129404",
+            Latitude = 45.791795,
+            Longitude = 24.129404,
         };
     }
 }

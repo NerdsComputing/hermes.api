@@ -57,8 +57,8 @@ namespace Data.UnitTests.Detection
             Camera = new ECamera
             {
                 Id = "1",
-                Latitude = "1",
-                Longitude = "1",
+                Latitude = 1,
+                Longitude = 1,
             },
         };
 
@@ -78,8 +78,8 @@ namespace Data.UnitTests.Detection
             Camera = new MCamera
             {
                 Id = "1",
-                Latitude = "1",
-                Longitude = "1",
+                Latitude = 1,
+                Longitude = 1,
             },
         };
     }

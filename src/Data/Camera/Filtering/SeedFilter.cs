@@ -1,5 +1,6 @@
 namespace Data.Camera.Filtering
 {
+    using System;
     using System.Linq;
     using Business.Camera.Register.Models;
     using Microsoft.EntityFrameworkCore;
@@ -27,13 +28,9 @@ namespace Data.Camera.Filtering
                 : input.Where(item => EF.Functions.Like(item.Id, $"%{_camera.Id}%"));
 
         private IQueryable<ECamera> MatchLatitude(IQueryable<ECamera> input) =>
-            string.IsNullOrEmpty(_camera.Latitude)
-                ? input
-                : input.Where(item => EF.Functions.Like(item.Latitude, $"%{_camera.Latitude}%"));
+            input.Where(camera => Math.Abs(camera.Latitude - _camera.Latitude) < Math.Abs(camera.Latitude * 0.00001) && camera.Latitude.Equals(_camera.Latitude));
 
         private IQueryable<ECamera> MatchLongitude(IQueryable<ECamera> input) =>
-            string.IsNullOrEmpty(_camera.Longitude)
-                ? input
-                : input.Where(item => EF.Functions.Like(item.Longitude, $"%{_camera.Longitude}%"));
+            input.Where(camera => Math.Abs(camera.Longitude - _camera.Longitude) < Math.Abs(camera.Longitude * 0.00001) && camera.Longitude.Equals(_camera.Longitude));
     }
 }
