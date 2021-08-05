@@ -13,8 +13,11 @@ namespace Presentation.Camera.Fetching.Types
             Name = "LatitudeFilter";
             Description = "This will be used for filtering the cameras by latitude";
 
-            Field(latitude => latitude.LesserEqualThan, true).Description("Cameras will have the latitude lesser or equal than this value.");
-            Field(latitude => latitude.GreaterEqualThan, true).Description("Cameras will have the latitude greater or equal than this value.");
+            Field(latitude => latitude.LesserEqualThan, true)
+                .Description("Cameras will have the latitude lesser or equal than this value.");
+
+            Field(latitude => latitude.GreaterEqualThan, true)
+                .Description("Cameras will have the latitude greater or equal than this value.");
         }
     }
 }
