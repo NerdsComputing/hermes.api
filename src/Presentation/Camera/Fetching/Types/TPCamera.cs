@@ -11,8 +11,20 @@ namespace Presentation.Camera.Fetching.Types
     {
         public TPCamera()
         {
-            Field(camera => camera.Ids, true).Description("This is the list of ids");
-            Field(camera => camera.Pagination, false, typeof(TPPagination)).Description("This is the pagination.");
+            Name = "CameraParameter";
+            Description = "Cameras will be filtered by this fields";
+
+            Field(camera => camera.Ids, true)
+                .Description("If no value will be given, then the cameras will not be filtered by id.");
+
+            Field(camera => camera.Latitude, true, typeof(TPLatitude))
+                .Description("If no value will be given, then the cameras will not be filtered by latitude.");
+
+            Field(camera => camera.Longitude, true, typeof(TPLongitude))
+                .Description("If no value will be given, then the cameras will not be filtered by longitude.");
+
+            Field(camera => camera.Pagination, false, typeof(TPPagination))
+                .Description("This will be used for grouping data in pages.");
         }
     }
 }
