@@ -9,9 +9,9 @@ namespace Data.Camera
     {
         public static MCamera MakeModel(ECamera entity) => new ()
         {
-            Id = entity?.Id,
-            Latitude = entity.Latitude,
-            Longitude = entity.Longitude,
+            Id = entity?.Id ?? string.Empty,
+            Latitude = entity?.Latitude ?? default,
+            Longitude = entity?.Longitude ?? default,
         };
 
         public static ECamera MakeEntity(MRegisterCamera model) => new ECamera()
