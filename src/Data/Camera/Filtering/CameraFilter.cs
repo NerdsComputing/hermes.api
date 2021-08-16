@@ -2,6 +2,8 @@ namespace Data.Camera.Filtering
 {
     using System.Linq;
     using Business.Camera.Fetching.Models;
+    using Microsoft.EntityFrameworkCore;
+    using MySql.EntityFrameworkCore.Extensions;
 
     public class CameraFilter : ICameraFilter
     {
@@ -22,10 +24,9 @@ namespace Data.Camera.Filtering
             return MatchGreaterLongitude(input);
         }
 
-        private IQueryable<ECamera> MatchId(IQueryable<ECamera> input) =>
-            _parameter.Ids != null
-                ? input.Where(entity => _parameter.Ids.Contains(entity.Id))
-                : input;
+        private IQueryable<ECamera> MatchId(IQueryable<ECamera> input) => _parameter.Ids != null
+            ? input.Where(entity => _parameter.Ids.Contains(entity.Id) || EF.Functions.Like(entity.Id, $"%{_parameter.Ids}%"))
+            : input;
 
         private IQueryable<ECamera> MatchLesserLatitude(IQueryable<ECamera> input) =>
             _parameter.Latitude.LesserEqualThan != null
