@@ -25,7 +25,7 @@ namespace Data.Camera.Filtering
         }
 
         private IQueryable<ECamera> MatchId(IQueryable<ECamera> input) => _parameter.Ids != null
-            ? input.Where(entity => _parameter.Ids.Contains(entity.Id) || EF.Functions.Like(entity.Id, $"%{_parameter.Ids}%"))
+            ? input.Where(entity => _parameter.Ids.Contains(entity.Id) || EF.Functions.Like(_parameter.Ids.Contains(entity.Id), $"%{_parameter.Ids}%"))
             : input;
 
         private IQueryable<ECamera> MatchLesserLatitude(IQueryable<ECamera> input) =>
