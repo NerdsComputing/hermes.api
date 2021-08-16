@@ -3,6 +3,7 @@ namespace Data.Detection.Filtering
     using System.Linq;
     using Business.Detection.Fetching.Models;
     using Microsoft.EntityFrameworkCore;
+    using MySql.EntityFrameworkCore.Extensions;
 
     public class DetectionFilter : IDetectionFilter
     {
@@ -55,6 +56,6 @@ namespace Data.Detection.Filtering
                 : input;
 
         private IQueryable<EDetection> MatchCameraIds(IQueryable<EDetection> input) =>
-            _parameter.CameraIds == null ? input : input.Where(detection => _parameter.CameraIds.Contains(detection.CameraId));
+            _parameter.CameraIds == null ? input : input.Where(detection => EF.Functions.Like(_parameter.CameraIds.Contains(detection.CameraId), $"%{_parameter.CameraIds}%"));
     }
 }
