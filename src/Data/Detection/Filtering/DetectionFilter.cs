@@ -1,7 +1,9 @@
 namespace Data.Detection.Filtering
 {
+    using System.Collections.Generic;
     using System.Linq;
     using Business.Detection.Fetching.Models;
+    using LinqKit;
     using Microsoft.EntityFrameworkCore;
     using MySql.EntityFrameworkCore.Extensions;
 
@@ -56,6 +58,17 @@ namespace Data.Detection.Filtering
                 : input;
 
         private IQueryable<EDetection> MatchCameraIds(IQueryable<EDetection> input) =>
-            _parameter.CameraIds == null ? input : input.Where(detection => EF.Functions.Like(_parameter.CameraIds.Contains(detection.CameraId), $"%{_parameter.CameraIds}%"));
+            _parameter.CameraIds == null ? input : MatchByCameraIds(input, _parameter.CameraIds);
+
+        private static IQueryable<EDetection> MatchByCameraIds(IQueryable<EDetection> input, List<string> ids)
+        {
+            var predicate = PredicateBuilder.New<EDetection>();
+            foreach (var id in ids)
+            {
+                predicate = predicate.Or(detections => EF.Functions.Like(detections.CameraId, $"%{id}%"));
+            }
+
+            return input.Where(predicate);
+        }
     }
 }

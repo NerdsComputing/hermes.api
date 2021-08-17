@@ -1,9 +1,10 @@
 namespace Data.Camera.Filtering
 {
+    using System.Collections.Generic;
     using System.Linq;
     using Business.Camera.Fetching.Models;
+    using LinqKit;
     using Microsoft.EntityFrameworkCore;
-    using MySql.EntityFrameworkCore.Extensions;
 
     public class CameraFilter : ICameraFilter
     {
@@ -25,8 +26,19 @@ namespace Data.Camera.Filtering
         }
 
         private IQueryable<ECamera> MatchId(IQueryable<ECamera> input) => _parameter.Ids != null
-            ? input.Where(entity => EF.Functions.Like(_parameter.Ids.Contains(entity.Id), $"%{_parameter.Ids}%"))
+            ? MatchByIds(input, _parameter.Ids)
             : input;
+
+        private static IQueryable<ECamera> MatchByIds(IQueryable<ECamera> input, List<string> ids)
+        {
+            var predicate = PredicateBuilder.New<ECamera>();
+            foreach (var id in ids)
+            {
+                predicate = predicate.Or(entity => EF.Functions.Like(entity.Id, $"%{id}%"));
+            }
+
+            return input.Where(predicate);
+        }
 
         private IQueryable<ECamera> MatchLesserLatitude(IQueryable<ECamera> input) =>
             _parameter.Latitude.LesserEqualThan != null
