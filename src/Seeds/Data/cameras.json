@@ -3,5 +3,15 @@
     "id": "default",
     "latitude": 53.27137,
     "longitude": -7.827415
+  },
+  {
+    "id": "Alba Iulia Street bridge",
+    "latitude": 45.793182,
+    "longitude": 24.131926
+  },
+  {
+    "id": "Cibin market bridge",
+    "latitude": 45.799904,
+    "longitude": 24.144012
   }
 ]
